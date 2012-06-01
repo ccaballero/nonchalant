@@ -3,16 +3,17 @@
 class Cal {
 
     protected $messages = array(
-        'error' => 'cal: Valor de año no permitido: utilice 1-9999',
+        'year' => 'cal: Valor de año no permitido: utilice 1-9999',
+        'month' => 'cal: Valor de mes no permitido: utilice 1-12',
     );
 
-    public function cal($options = array()) {
+    public function main($options = array()) {
         global $OUTPUT;
 
         $salida = '';
         switch (count($options)) {
             case 1:
-                $salida = $this->print_month1(time());
+                $salida = implode(PHP_EOL, $this->print_array_month(time()));
                 break;
             case 2:
                 $year1 = $options[1];
@@ -24,24 +25,59 @@ class Cal {
 
                         $months = array();
                         for ($i = 0; $i < 12; $i++) {
-                            $months = $this->print_month(time());
+                            $months[] = $this->print_array_month(mktime(0, 0, 0, $i+1, 1, $year2), false);
                         }
-                        
-                        for ($i = 0; $i < 3; $i++) {
+
+                        for ($i = 0; $i < 12; $i+=3) {
                             
+                            $counts = array(
+                                count($months[$i]),
+                                count($months[$i+1]),
+                                count($months[$i+2]),
+                            );
+                            
+                            for ($j = 0; $j < max($counts); $j++) {
+                                $lines_0 = isset($months[$i][$j]) ? $months[$i][$j] : str_repeat(' ', 20);
+                                $lines_1 = isset($months[$i+1][$j]) ? $months[$i+1][$j] : str_repeat(' ', 20);
+                                $lines_2 = isset($months[$i+2][$j]) ? $months[$i+2][$j] : str_repeat(' ', 20);
+                                
+                                $salida .= "$lines_0  $lines_1  $lines_2" . PHP_EOL;
+                            }
+                            $salida .= PHP_EOL;
                         }
-                        
                     } else {
-                        $salida = "{$this->messages['error']}";
+                        $salida = "{$this->messages['year']}";
                     }                
                 } else {
-                    $salida = "{$this->messages['error']}: '$year1'";
+                    $salida = "{$this->messages['year']}: '$year1'";
                 }                
-                // [año] todos los meses
                 break;
             case 3:
             case 4:
-                // [mes del año] con todos sus dias
+                $month1 = $options[1];
+                $month2 = intval($month1);
+                
+                $year1 = $options[2];
+                $year2 = intval($year1);
+
+                if (is_int($year2)) {
+                    if (1 < $year2 && $year2 < 9999) {
+                        if (is_int($month2)){
+                            if (1 <= $month2 && $month2 <= 12) {
+                                $time = mktime(0, 0, 0, $month2, 1,$year2);
+                                $salida = implode(PHP_EOL, $this->print_array_month($time));
+                            } else {
+                                $salida = "{$this->messages['month']}";
+                            }
+                        } else { 
+                            $salida = "{$this->messages['month']}: '$month1'";
+                        }
+                    } else {
+                        $salida = "{$this->messages['year']}";
+                    }
+                } else {
+                    $salida = "{$this->messages['year']}: '$year1'";
+                }                
                 break;
             default:
                 // manual
@@ -51,32 +87,42 @@ class Cal {
         $OUTPUT .= $salida;        
     }
 
-    private function print_month1($time) {
-        return implode('', $this->print_month);
-    }
-    
-    private function print_month($time) {
+    private function print_array_month($time, $print_year = true) {
         $array = array();
-        
-        $array[] = str_pad(date('F', $time) . ' ' . date('Y', $time), 20, ' ', STR_PAD_BOTH) . PHP_EOL;
-        $array[] = 'do lu ma mi ju vi sá' . PHP_EOL;
 
-        $primero = mktime(0, 0, 0, date('n', $time), 1, date('Y', $time));
-        $dia_primero = date('w', $primero);
-
-        $array[] = str_repeat(' ', 3 * $dia_primero);
-
-        $b = $dia_primero;
-        $condicion = 0;
-
-        for ($i = 1; $i <= date('t', $primero); $i++) {
-            $array[] = str_pad($i, 2, ' ', STR_PAD_LEFT) . ' ';
-            if ($i % (7 - $b) == $condicion) {
-                $array[] = PHP_EOL;
-                $condicion = 7 - $dia_primero; 
-                $b = 0;
-            }
+        // Impresion del nombre del mes
+        if ($print_year) {
+            $array[] = str_pad(date('F', $time) . ' ' .
+                       date('Y', $time), 20, ' ', STR_PAD_BOTH);
+        } else {
+            $array[] = str_pad(date('F', $time), 20, ' ', STR_PAD_BOTH);
         }
+        // Impresion de las cabeceras de dia
+        $array[] = 'do lu ma mi ju vi sá';
+
+        //Calculo el time de la semana que cae primero de mes
+        $time_first_day = mktime(0, 0, 0, date('n', $time), 1, date('Y', $time));
+        $time_last_day = mktime(0, 0, 0, date('n', $time), date('t', $time), date('Y', $time));
+        $time_day = $time_first_day;
+
+        // Recorro cada dia del mes
+        while ($time_day <= $time_last_day) {
+            $array_week[] = str_pad(date('j', $time_day), 2, ' ', STR_PAD_LEFT);
+
+            if (date('w', $time_day) == 6) {
+                $array[] = implode(' ', $array_week);
+                $array_week = array();
+            }
+
+            $time_day = $time_day + 86400;
+        }
+
+        if(!empty($array_week)) {
+            $array[] = implode(' ', $array_week);
+        }
+
+        $array[2] = str_repeat(' ', 3 * (date('w', $time_first_day))) . $array[2];
+        $array[count($array) - 1] .= str_repeat(' ', 3 * (6 - date('w', $time_day - 86400)));
 
         return $array;
     }

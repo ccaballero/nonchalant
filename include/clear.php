@@ -1,6 +1,9 @@
 <?php
 
-function nch_clear() {
-    global $OUTPUT;
-    $OUTPUT = '';    
+class Clear
+{
+    public function main() {
+        global $OUTPUT;
+        $OUTPUT = '';    
+    }
 }

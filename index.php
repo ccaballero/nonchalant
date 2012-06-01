@@ -24,7 +24,7 @@ if (isset($_POST['comando'])) {
         $object = new $object_name();
 
         $OUTPUT .= $comando . PHP_EOL;
-        $object->$options[0]($options);
+        $object->main($options);
         $OUTPUT .= PHP_EOL;
 
     } else {
@@ -51,4 +51,3 @@ if (isset($_POST['comando'])) {
     </body>
 
 </html>
-
