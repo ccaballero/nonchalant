@@ -1,0 +1,21 @@
+* {
+    color: #666666;
+    font-family: Courier,monospace;
+    font-size: 14px;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: #cccccc;
+}
+
+input[type="text"] {
+    background-color: #cccccc;
+    border: none;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0px;
+}
