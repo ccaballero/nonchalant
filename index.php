@@ -23,7 +23,7 @@ if (isset($_POST['comando'])) {
         $object_name = ucfirst($comando);
         $object = new $object_name();
 
-        $OUTPUT .= $comando . PHP_EOL;
+        $OUTPUT .= '# ' . $comando . PHP_EOL;
         $object->main($options);
         $OUTPUT .= PHP_EOL;
 

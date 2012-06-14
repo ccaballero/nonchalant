@@ -7,7 +7,7 @@
         <link href="docs/scesi/nonchalant.png" rel="icon" />
         <link href="css/carlos.css" media="screen" rel="stylesheet" type="text/css" />
     </head>
-    <body>
+    <body class="c4">
         <div id="header"></div>
         <div id="wrapper">
             <div id="main">
