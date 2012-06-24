@@ -1,0 +1,23 @@
+* {
+  color: #00FF00;
+  font-size : 1.1em;
+}
+body {
+  font-family : Verdana;
+  background-image : url("../../img/jmejia/fondo.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 100% 50%;
+  background-color: #000000;
+}
+
+input {
+  font-family : Verdana;
+  font-size : 1.1em;
+  background : black;
+  color : #00FF00;
+  border : none;
+}
+
+pre {
+}

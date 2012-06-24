@@ -10,4 +10,3 @@ VALUES
 (6, 1,    'usr/',  'directory', NULL, '', 1, 1, 0, 0),
 (7, 1,    'tmp/',  'directory', NULL, '', 1, 1, 0, 0),
 (8, 1,    'var/',  'directory', NULL, '', 1, 1, 0, 0);
-

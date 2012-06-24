@@ -5,7 +5,7 @@
         <title>/bin/nch</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link href="docs/scesi/nonchalant.png" rel="icon" />
-        <link href="css/carlos.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="css/carlos/style.css" media="screen" rel="stylesheet" type="text/css" />
     </head>
     <body class="c4">
         <div id="header"></div>

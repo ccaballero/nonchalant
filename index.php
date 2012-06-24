@@ -37,7 +37,31 @@ if (isset($_POST['comando'])) {
 include('Zend/View.php');
 $view = new Zend_View();
 $view->setScriptPath('templates');
+
+$available_templates = array('carlos', 'crhyst', 'jmejia');
+$random_index = rand(0, count($available_templates) - 1);
+$random_template = $available_templates[$random_index];
+
+if (!isset($_SESSION['template'])) {
+    $_SESSION['template'] = $random_template . '.php';
+}
+
 $view->output = $OUTPUT;
-echo $view->render('carlos.php');
+echo $view->render($_SESSION['template']);
+
+
+/*
+$db_connect = mysql_connect('localhost', 'carlos', 'asdf');
+mysql_select_db('nonchalant');
+
+if (!$db_connect) {
+    die('No pudo conectarse: ' . mysql_error());
+}
+
+echo 'Conectado satisfactoriamente';
+
+
+mysql_close($db_connect);
+ */
 
 ?>

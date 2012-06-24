@@ -1,5 +1,5 @@
 DROP TABLE IF EXISTS `node`;
-CREATE TABLE node (
+CREATE TABLE `node` (
     `id`                int                               NOT NULL auto_increment,
     `parent`            int                               NULL,
     `name`              varchar(128)                      NOT NULL,
@@ -14,4 +14,3 @@ CREATE TABLE node (
     INDEX (`parent`),
     FOREIGN KEY (`parent`) REFERENCES `node`(`id`) ON UPDATE CASCADE ON DELETE RESTRICT
 ) DEFAULT CHARACTER SET UTF8;
-
