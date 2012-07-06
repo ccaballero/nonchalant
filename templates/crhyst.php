@@ -30,7 +30,7 @@
         <article>
             <pre><?php echo $this->output ?></pre>
             <form name="comnd" action="" method="post">
-                <label>nonchalant@nonchalant :</label>
+                <label> <?php echo $this->hostname ?>@<?php echo $this->user?><?php echo $this->prompt?>  </label>
                 <input name="comando" type="text" autocomplete="off" />
             </form>
         </article>
