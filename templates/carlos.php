@@ -16,7 +16,7 @@
                 <form action="" method="post">
                     <?php echo $this->escape($this->hostname) ?>!<?php echo $this->escape($this->user) ?>
                     <?php echo $this->escape($this->prompt) ?>
-                    <input id="command" name="comando" type="text" />
+                    <input id="command" name="comando" type="text" autocomplete="off" />
                 </form>
             </div>
             <div id="footer">

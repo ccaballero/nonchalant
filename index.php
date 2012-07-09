@@ -55,14 +55,14 @@ function translate($path) {
 // Filssystem initialization
 $file = new FS_File_Files($opened_files);
 
-$fd = $file->open(translate('/example.read'), 'r');
+//$fd = $file->open(translate('/example.read'), 'r');
 
-$buffer = $file->read($fd, 5);
-var_dump($buffer);
+//$buffer = $file->read($fd, 5);
+//var_dump($buffer);
 
-$file->close($fd);
+//$file->close($fd);
 
-die;
+//die;
 
 // View inirialization
 $view = new Zend_View();

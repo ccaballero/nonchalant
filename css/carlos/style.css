@@ -28,7 +28,7 @@ html, body, input {
     background-color: #ffffff;
     font-size: 1.3em;
     padding: 10px 5px 10px 5px;
-    min-height: 600px;
+    min-height: 500px;
 }
 
 #footer {
@@ -60,7 +60,7 @@ input {
     border: none;
     background-color: #f0f0f0;
 
-    width: 894px;
+    width: 600px;
     font-size: 1.0em;
 }
 
