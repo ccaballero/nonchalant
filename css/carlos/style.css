@@ -1,8 +1,7 @@
 html, body, input {
     margin: 0;
     padding: 0;
-
-    font-family: monospace;
+    font: 0.95em "Trebuchet MS",Helvetica,sans-serif;
     color: #202020;
 }
 
@@ -43,8 +42,13 @@ html, body, input {
     padding: 4px 4px 4px 4px;
 }
 
+#main, input, pre {
+    font: 0.96em "Courier New", Courier, monospace;
+}
+
 #footer {
     background-color: #b0b0b0;
+    box-shadow: 0px 6px 12px 3px #000000;
     background-image: -moz-linear-gradient(center top , #c0c0c0, #707070);
     background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#c0c0c0), to(#707070));
     /*background-image: linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);*/
@@ -59,10 +63,9 @@ html, body, input {
 }
 
 #footer a {
-    color: #202020;
-    text-shadow: 1px 1px 1px #ffffff;
+    color: #ffffff;
+    text-shadow: 1px 1px 1px #202020;
     text-decoration: none;
-    font-weight: bold;
     padding: 0px 10px;
 }
 
@@ -78,7 +81,6 @@ form {
 input {
     border: none;
     background-color: #f0f0f0;
-    font-size: 1.0em;
 }
 
 a:focus, input:focus {
@@ -87,5 +89,4 @@ a:focus, input:focus {
 
 #command {
     width: 1.0em;
-    font-size: 13px;
 }

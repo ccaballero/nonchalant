@@ -82,7 +82,7 @@ $_SESSION['template'] = 'carlos.php';
 
 $view->output = $OUTPUT;
 $view->user = 'carlos';
-$view->prompt= ' $ ';
+$view->prompt= '$';
 $view->hostname = 'scesi';
 
 echo $view->render($_SESSION['template']);
