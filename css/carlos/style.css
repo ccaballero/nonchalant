@@ -63,8 +63,8 @@ html, body, input {
 }
 
 #footer a {
-    color: #ffffff;
-    text-shadow: 1px 1px 1px #202020;
+    color: #000000;
+    text-shadow: 1px 1px 1px #ffffff;
     text-decoration: none;
     padding: 0px 10px;
 }

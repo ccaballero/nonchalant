@@ -8,7 +8,7 @@
         <link href="css/carlos/style.css" media="screen"
               rel="stylesheet" type="text/css" />
     </head>
-    <body class="c<?php echo rand(1, 6) ?>">
+    <body class="c5">
         <div id="header" />
         <div id="wrapper">
             <div id="wrapper2">
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div id="footer"><a href="http://scesi.fcyt.umss.edu.bo/" target="_BLANK">SCESI</a><a href="http://www.memi.umss.edu.bo/" target="_BLANK">MEMI</a><a href="https://github.com/ccaballero/nonchalant">Código fuente</a></div>
+        <div id="footer"><a href="http://www.scesi.memi.umss.edu.bo/" target="_BLANK">SCESI</a><a href="http://www.memi.umss.edu.bo/" target="_BLANK">MEMI</a><a href="https://github.com/ccaballero/nonchalant">Código fuente</a></div>
         <script type="text/javascript">window.onload=function(){document.getElementById("command").focus();}</script>
     </body>
 </html>
