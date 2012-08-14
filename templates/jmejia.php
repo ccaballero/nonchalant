@@ -16,7 +16,11 @@ function activarPrimerControl()
         <h1></h1>
         <pre><?php echo $this->output ?></pre>
         <form name="cmd" action="" method="post">
-            <label>nonchalant@nonchalant :</label>
+            <label>
+                <?php echo $this->escape($this->hostname) ?>@
+                <?php echo $this->escape($this->user)?>
+                <?php echo $this->prompt?>
+            </label>
             <input name="comando" type="text" autocomplete="off" />
         </form>
     </body

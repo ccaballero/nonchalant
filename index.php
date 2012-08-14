@@ -1,8 +1,17 @@
 <?php
 
 global $OUTPUT;
-
+global $OPENED_FILES;
 session_start();
+define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+ini_set('include_path', ini_get('include_path').PATH_SEPARATOR. APPLICATION_PATH .DIRECTORY_SEPARATOR .'lib');
+
+// Loading classes
+include('Zend/Loader/Autoloader.php');
+$loader = Zend_Loader_Autoloader::getInstance();
+$loader->registerNamespace('Zend');
+$loader->registerNamespace('FS');
+$loader->registerNamespace('Collections');
 
 if (!isset($_SESSION['historial'])) {
     $_SESSION['historial'] = '';
@@ -10,12 +19,13 @@ if (!isset($_SESSION['historial'])) {
 
 $OUTPUT = $_SESSION['historial'];
 
+$OPENED_FILES = new Collections_List();
 if (isset($_POST['comando'])) {
     $comando = $_POST['comando'];
     $options = explode(' ', $comando);
     $comando = $options[0];
 
-    $lista = array('date', 'cal', 'clear');
+    $lista = array('date', 'cal', 'clear', 'cat');
     if (in_array($options[0], $lista)) {
 
         include "include/$comando.php";
@@ -34,37 +44,14 @@ if (isset($_POST['comando'])) {
     $_SESSION['historial'] = $OUTPUT;
 }
 
-define('APPLICATION_PATH', realpath(dirname(__FILE__)));
-ini_set('include_path', ini_get('include_path').PATH_SEPARATOR. APPLICATION_PATH .DIRECTORY_SEPARATOR .'lib');
-
-// Loading classes
-include('Zend/Loader/Autoloader.php');
-$loader = Zend_Loader_Autoloader::getInstance();
-$loader->registerNamespace('Zend');
-$loader->registerNamespace('FS');
-$loader->registerNamespace('Collections');
 
 // Kernel initialization
-$opened_files = new Collections_List();
 
 function translate($path) {
     return APPLICATION_PATH . '/data/fs_example' . $path;
 }
 
-
-// Filssystem initialization
-$file = new FS_File_Files($opened_files);
-
-//$fd = $file->open(translate('/example.read'), 'r');
-
-//$buffer = $file->read($fd, 5);
-//var_dump($buffer);
-
-//$file->close($fd);
-
-//die;
-
-// View inirialization
+//View inirialization
 $view = new Zend_View();
 $view->setScriptPath('templates');
 
@@ -77,13 +64,13 @@ if (!isset($_SESSION['template'])) {
     $_SESSION['template'] = $random_template . '.php';
 }
 
-$_SESSION['template'] = 'edgar.php';
+$_SESSION['template'] = 'carlos.php';
 
 
 $view->output = $OUTPUT;
-$view->user = 'carlos';
+$view->user = 'scesi';
 $view->prompt= '$';
-$view->hostname = 'scesi';
+$view->hostname = 'nonchalant';
 
 echo $view->render($_SESSION['template']);
 
