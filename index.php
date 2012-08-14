@@ -77,7 +77,7 @@ if (!isset($_SESSION['template'])) {
     $_SESSION['template'] = $random_template . '.php';
 }
 
-$_SESSION['template'] = 'carlos.php';
+$_SESSION['template'] = 'edgar.php';
 
 
 $view->output = $OUTPUT;
