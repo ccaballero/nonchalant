@@ -1,14 +1,13 @@
 <?php
 
-class Cat {
-
-    function main($options = array()) {
-        global $OUTPUT;
+class Cat
+{
+    public function main($getopt) {
         global $OPENED_FILES;
+        
         //Filssystem initialization
-        if (count($options) > 1) {
-            array_shift($options);
-            foreach ($options as $path) {
+        if (count($getopt->arguments) >= 1) {
+            foreach ($getopt->arguments as $path) {
                 $file = new FS_File_Files($OPENED_FILES);
 
                 $fd = $file->open(translate($path), 'r');
@@ -18,9 +17,7 @@ class Cat {
                     $buffer .= $aux;
                 }
 
-                //var_dump($buffer);
-
-                $OUTPUT .= $buffer . PHP_EOL;
+                echo $buffer . PHP_EOL;
                 $file->close($fd);
             }
         }

@@ -28,10 +28,10 @@
         <header>
         </header>
         <article>
-            <pre><?php echo $this->output ?></pre>
-            <form name="comnd" action="" method="post">
-                <label> <?php echo $this->hostname ?>@<?php echo $this->user?><?php echo $this->prompt?>  </label>
-                <input name="comando" type="text" autocomplete="off" />
+            <pre><?php foreach ($this->outputs as $output) { ?><span class="prompt"><?php echo $this->escape($this->hostname) ?>!<?php echo $this->escape($this->user) ?>&nbsp;<?php echo $this->escape($this->prompt) ?></span><?php echo $output ?><?php } ?></pre>
+            <form action="" method="post">
+                <span class="prompt"><?php echo $this->escape($this->hostname) ?>!<?php echo $this->escape($this->user) ?>&nbsp;<?php echo $this->escape($this->prompt) ?></span>
+                <input id="command" name="comando" type="text" autocomplete="off" onkeypress="this.style.width=((this.value.length + 1) * 8) + 'px';" />
             </form>
         </article>
 

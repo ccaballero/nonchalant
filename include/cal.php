@@ -7,16 +7,18 @@ class Cal {
         'month' => 'cal: Valor de mes no permitido: utilice 1-12',
     );
 
-    public function main($options = array()) {
-        global $OUTPUT;
+    public function main($getopt) {
+        global $OUTPUTS;
+        
+        $arguments = $getopt->arguments;
 
         $salida = '';
-        switch (count($options)) {
-            case 1:
+        switch (count($arguments)) {
+            case 0:
                 $salida = implode(PHP_EOL, $this->print_array_month(time()));
                 break;
-            case 2:
-                $year1 = $options[1];
+            case 1:
+                $year1 = $arguments[0];
                 $year2 = intval($year1);
              
                 if (is_int($year2)) {
@@ -52,12 +54,12 @@ class Cal {
                     $salida = "{$this->messages['year']}: '$year1'";
                 }                
                 break;
+            case 2:
             case 3:
-            case 4:
-                $month1 = $options[1];
+                $month1 = $arguments[0];
                 $month2 = intval($month1);
                 
-                $year1 = $options[2];
+                $year1 = $arguments[1];
                 $year2 = intval($year1);
 
                 if (is_int($year2)) {
@@ -84,7 +86,8 @@ class Cal {
                 break;
         }
 
-        $OUTPUT .= $salida;        
+        //$OUTPUTS[] = $salida;        
+        echo $salida;        
     }
 
     private function print_array_month($time, $print_year = true) {

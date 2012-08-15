@@ -3,7 +3,7 @@
 class Clear
 {
     public function main() {
-        global $OUTPUT;
-        $OUTPUT = '';    
+        global $OUTPUTS;
+        $OUTPUTS = array();    
     }
 }

@@ -4,7 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
     <body>
-        <pre><?php echo $this->output ?></pre>
+        <pre><?php echo implode('', $this->outputs) ?></pre>
         <form action="" method="post">
             <input name="comando" type="text" />
             <input type="submit" />

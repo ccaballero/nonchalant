@@ -13,7 +13,9 @@
         <div id="wrapper">
             <div id="wrapper2">
                 <div id="main">
-                    <pre><?php echo $this->output ?></pre>
+                <?php foreach ($this->outputs as $output) { ?>
+                    <div style="width: 100%;"><?php echo $output ?></div>
+                <?php } ?>
                     <form action="" method="post">
                         <span class="prompt"><?php echo $this->escape($this->hostname) ?>!<?php echo $this->escape($this->user) ?>&nbsp;<?php echo $this->escape($this->prompt) ?></span>
                         <input id="command" name="comando" type="text" autocomplete="off" onkeypress="this.style.width=((this.value.length + 1) * 8) + 'px';" />
