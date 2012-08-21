@@ -105,8 +105,7 @@ if (isset($_POST['comando'])) {
         
         $object_name = ucfirst($script);
         $object = new $object_name();
-
-        
+ 
         ob_start();
         $object->main($getopt);
         $result = ob_get_contents();
@@ -114,7 +113,7 @@ if (isset($_POST['comando'])) {
             $result = $command . PHP_EOL . $result . PHP_EOL;
         }
         ob_clean();
-        
+
         $OUTPUTS[] = $result;
     } else {
         $OUTPUTS[] = 'nch: ' . $script . ': no se encontró la orden' . PHP_EOL;
