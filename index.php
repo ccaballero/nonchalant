@@ -87,6 +87,9 @@ $loader->registerNamespace('Collections');
 global $OPENED_FILES;
 $OPENED_FILES = new Collections_List();
 
+global $ROOT_DIR;
+$ROOT_DIR = new FS_Tree_Files();
+
 if (!isset($_SESSION['historial'])) {
     $_SESSION['historial'] = array();
 }
