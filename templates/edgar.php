@@ -17,7 +17,7 @@
                 width: 50%;
             }
             #consola{
-                border-radius: 0px 10px 0px 10px;
+                border-radius: 10px 10px 10px 10px;
                 text-align: center;
                 background: graytext;
                 color: whitesmoke;
