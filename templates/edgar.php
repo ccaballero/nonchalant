@@ -25,7 +25,6 @@
         </style>
     </head>
     <body>
-        
         <div id="consola">
             mi consola
         </div>
@@ -35,3 +34,4 @@
         </form>
     </body>
 </html>
+
