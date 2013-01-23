@@ -2,6 +2,7 @@
 
 class Pwd {
     public function main() {
-        echo '/';
+        global $CURRENT_DIRECTORY;
+        echo $CURRENT_DIRECTORY;
     }
 }

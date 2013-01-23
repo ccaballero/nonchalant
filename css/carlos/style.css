@@ -90,3 +90,8 @@ a:focus, input:focus {
 #command {
     width: 1.0em;
 }
+
+.editor {
+    width: 99%;
+    height: 20.0em;
+}
