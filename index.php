@@ -1,5 +1,5 @@
 <?php
-
+//vladwelt participo el 13 de abril
 session_start();
 define('APPLICATION_PATH', realpath(dirname(__FILE__)));
 ini_set('include_path',
