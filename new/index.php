@@ -1,12 +1,44 @@
 <?php
-global $HISTORIAL;
+global $HISTORIAL, $OPENED_FILES, $VARS;
+
 $HISTORIAL = $_POST['historial'];
 
-global $VARS;
 $VARS = unserialize($_POST['vars']);
+
+// 0 -> stdin
+// 1 -> stdout
+// 2 -> stderr
+$OPENED_FILES = array('', '', '');
 
 $result = '';
 $final_result = '';
+
+function command ($command) {
+    global $OPENED_FILES;
+    $parameter = explode(' ', $command);
+
+    if (file_exists('bin/' . $parameter[0] . '.php')) {
+        include_once 'bin/' . $parameter[0] . '.php';
+    }
+
+    $_class = ucfirst($parameter[0]);
+    $class = class_exists('_' . $_class) ? '_' . $_class :
+            (class_exists($_class) ? $_class : null);
+    if ($class <> null) {
+        $object = new $class();
+        $object->execute($parameter);
+        $result = $OPENED_FILES[1];
+        $flag = true;
+    } else {
+        $result = 'nch: ' . $parameter[0] . ': command not found';
+        $flag = false;
+    }
+
+    return array(
+        'flag' => $flag,
+        'result' => $result,
+    );
+}
 
 if (isset($_POST['command'])) {
     $commands = preg_split('/(?<!\\\\);/', $_POST['command']);
@@ -16,25 +48,15 @@ if (isset($_POST['command'])) {
         $command = ltrim($command);
         if (preg_match("/[a-zA-Z_][a-zA-Z0-9_]*=.*/", $command)) {
             list($a, $b) = explode('=', $command);
-            
             $VARS[$a] = $b;
-            
+//        } else if (preg_match(".+(|.+)+", $command)) {
+//            $pipes = explode('|', $command);
+//            foreach ($pipes as $pipe) {
+//                
+//            }
         } else {
-            $parameter = explode(' ', $command);
-            
-            if (file_exists('bin/' . $parameter[0] . '.php')) {
-                include_once 'bin/' . $parameter[0] . '.php';
-            }
-
-            $_class = ucfirst($parameter[0]);
-            $class = class_exists('_' . $_class) ? '_' . $_class :
-                    (class_exists($_class) ? $_class : null);
-            if ($class <> null) {
-                $object = new $class();
-                $result = $object->execute($parameter);
-            } else {
-                $result = 'nch: ' . $parameter[0] . ': command not found';
-            }
+            $_result = command($command);
+            $result = $_result['result'];
         }
 
         $final_result .= $result . PHP_EOL;
