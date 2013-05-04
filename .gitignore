@@ -1,2 +1,7 @@
 /nbproject
 /nbproject/private/
+*.aux
+*.log
+*.synctex.gz
+*.out
+*.toc

@@ -1,10 +1,15 @@
 <?php
 global $HISTORIAL, $OPENED_FILES, $VARS;
 
-$HISTORIAL = $_POST['historial'];
+$HISTORIAL = '';
+if (isset($_POST['historial'])) {
+    $HISTORIAL = $_POST['historial'];
+}
 
-$VARS = unserialize($_POST['vars']);
-
+$VARS = '';
+if (isset($_POST['vars'])) {
+    $VARS = unserialize($_POST['vars']);
+}
 // 0 -> stdin
 // 1 -> stdout
 // 2 -> stderr
@@ -13,7 +18,7 @@ $OPENED_FILES = array('', '', '');
 $result = '';
 $final_result = '';
 
-function command ($command) {
+function command($command) {
     global $OPENED_FILES;
     $parameter = explode(' ', $command);
 
