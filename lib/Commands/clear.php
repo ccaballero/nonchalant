@@ -1,5 +1,5 @@
 <?php
-
+// elvis
 class Clear implements Command
 {
     public function execute($parameter) {
@@ -7,3 +7,10 @@ class Clear implements Command
         $HISTORIAL = '';
     }
 }
+//class Clear
+//{
+//    public function main() {
+//        global $OUTPUTS;
+//        $OUTPUTS = array();    
+//    }
+//}

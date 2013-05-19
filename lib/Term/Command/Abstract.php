@@ -1,7 +1,13 @@
 <?php
 
-abstract class Term_Abstract_Command {
+abstract class Term_Command_Abstract {
 
+    protected $kernel;
+    
+    public function __construct($kernel) {
+        $this->kernel = $kernel;
+    }
+    
     public static function validateOptions($options) {
         $valid_options = array();
         foreach ($options as $option => $description) {
@@ -23,8 +29,6 @@ abstract class Term_Abstract_Command {
             $result = array(
                 'large' => $large,
                 'short' => $o,
-//                'cardinality' => $m,
-//                'type' => $t,
             );
             
             $valid_options[$large] = $result;

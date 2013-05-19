@@ -1,6 +1,6 @@
 <?php
 
-interface Term_Input {
+interface Term_Input_Interface {
 
     public function getCommand();
     public function getParameters();

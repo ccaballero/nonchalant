@@ -1,10 +1,14 @@
 <?php
 
-class Next implements Command {
+class Commands_Next
+    extends Term_Command_Abstract {
 
-    public function execute($parameter) {
-        global $OPENED_FILES;
-
+    public static $valid_options = array();
+    
+    public function main($input) {
+        //global $OPENED_FILES;
+        $parameter = $input->getParameters();
+        
         array_shift($parameter);
 
         $index = rand(0, count($parameter));
@@ -17,7 +21,7 @@ class Next implements Command {
                 . ' and the co-pilot is: '
                 . array_pop($parameter);
 
-        $OPENED_FILES[1] = $result;
+        //$OPENED_FILES[1] = $result;
+        return $result;
     }
-
 }

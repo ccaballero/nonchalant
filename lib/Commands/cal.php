@@ -1,5 +1,5 @@
 <?php
-
+// pepe
 class Cal {
 
     protected $messages = array(
@@ -9,7 +9,7 @@ class Cal {
 
     public function main($getopt) {
         global $OUTPUTS;
-        
+
         $arguments = $getopt->arguments;
 
         $salida = '';
@@ -20,7 +20,7 @@ class Cal {
             case 1:
                 $year1 = $arguments[0];
                 $year2 = intval($year1);
-             
+
                 if (is_int($year2)) {
                     if (1 < $year2 && $year2 < 9999) {
                         $salida = str_pad($year2, 64, ' ', STR_PAD_BOTH) . PHP_EOL . PHP_EOL;
@@ -31,34 +31,34 @@ class Cal {
                         }
 
                         for ($i = 0; $i < 12; $i+=3) {
-                            
+
                             $counts = array(
                                 count($months[$i]),
                                 count($months[$i+1]),
                                 count($months[$i+2]),
                             );
-                            
+
                             for ($j = 0; $j < max($counts); $j++) {
                                 $lines_0 = isset($months[$i][$j]) ? $months[$i][$j] : str_repeat(' ', 20);
                                 $lines_1 = isset($months[$i+1][$j]) ? $months[$i+1][$j] : str_repeat(' ', 20);
                                 $lines_2 = isset($months[$i+2][$j]) ? $months[$i+2][$j] : str_repeat(' ', 20);
-                                
+
                                 $salida .= "$lines_0  $lines_1  $lines_2" . PHP_EOL;
                             }
                             $salida .= PHP_EOL;
                         }
                     } else {
                         $salida = "{$this->messages['year']}";
-                    }                
+                    }
                 } else {
                     $salida = "{$this->messages['year']}: '$year1'";
-                }                
+                }
                 break;
             case 2:
             case 3:
                 $month1 = $arguments[0];
                 $month2 = intval($month1);
-                
+
                 $year1 = $arguments[1];
                 $year2 = intval($year1);
 
@@ -71,7 +71,7 @@ class Cal {
                             } else {
                                 $salida = "{$this->messages['month']}";
                             }
-                        } else { 
+                        } else {
                             $salida = "{$this->messages['month']}: '$month1'";
                         }
                     } else {
@@ -79,15 +79,15 @@ class Cal {
                     }
                 } else {
                     $salida = "{$this->messages['year']}: '$year1'";
-                }                
+                }
                 break;
             default:
                 // manual
                 break;
         }
 
-        //$OUTPUTS[] = $salida;        
-        echo $salida;        
+        //$OUTPUTS[] = $salida;
+        echo $salida;
     }
 
     private function print_array_month($time, $print_year = true) {

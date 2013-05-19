@@ -1,5 +1,5 @@
 <?php
-
+// pepe
 class _Echo implements Command {
 
     public function execute($parameter) {

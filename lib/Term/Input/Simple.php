@@ -1,16 +1,15 @@
 <?php
 
-class Term_Default_Input implements Term_Input {
+class Term_Input_Simple
+    implements Term_Input_Interface {
 
     protected $command;
     protected $options;
     protected $parameters;
 
-    public function __construct($instruction) {
+    public function setInstruction($instruction) {
         $pieces = preg_split('/ +/', $instruction);
         $this->command = array_shift($pieces);
-
-        // Options
         $this->parse($pieces);
     }
 
@@ -28,7 +27,7 @@ class Term_Default_Input implements Term_Input {
 
     private function parse($pieces) {
         $command = 'Commands_' . ucfirst($this->getCommand());
-        $input = Term_Abstract_Command::validateOptions(
+        $input = Term_Command_Abstract::validateOptions(
             $command::$valid_options
         );
 

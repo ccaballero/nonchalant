@@ -12,9 +12,12 @@ function __autoload($class) {
     include str_replace('_', '/', $class) . '.php';
 }
 
-try {
-    $input = new Term_Default_Input($argv[1]);
-    var_dump($input);
-} catch (Term_Exceptions_Parser $ex) {
-    echo $ex->getMessage() . PHP_EOL;
-}
+$config = Config::getInstance();
+$config->layout_directory = APPLICATION_PATH . '/templates/';
+$config->layout_file = 'default.php';
+
+$input = new Term_Input_Complex();
+$output = new Term_Output_Default_Simple();
+$kernel = new Term_Kernel_Default($input, $output);
+
+$kernel->init()->parser()->execute();
