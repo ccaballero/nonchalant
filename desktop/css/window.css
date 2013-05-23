@@ -1,0 +1,53 @@
+/* Windows */
+
+#desktop div.window {
+    position: absolute;
+    min-width: 100px;
+    background-color: #ffffff;
+    border: 1px solid #808080;
+    z-index: 2;
+}
+
+#desktop div.window.active {
+    z-index: 3;
+    box-shadow: 1px 1px 10px #404040;
+}
+
+#desktop div.window .border {
+    height: 18px;
+    background: -moz-linear-gradient(center top , #CCCCCC, #DDDDDD) repeat scroll 0 0 transparent;
+    border-bottom: 1px solid #808080;
+    position: relative;
+    cursor: pointer;
+}
+
+#desktop div.window.active .border {
+    background: #AADD00;
+}
+
+#desktop div.window .border .title {
+    position: absolute;
+    left: 0px;
+    right: 43px;
+    line-height: 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+#desktop div.window .border .controls {
+    position: absolute;
+    width: 43px;
+    right: 0px;
+}
+
+#desktop div.window .border .controls a {
+    margin: 0px 3px 0px 3px;
+    font-size: 14px;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+

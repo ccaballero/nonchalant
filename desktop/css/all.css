@@ -1,0 +1,16 @@
+html, body, div, p, ul, li, a {
+    font-family: "Courier New",Courier,monospace;
+    font-size: 12px;
+    margin: 0px;
+    padding: 0px;
+    color: #000000;
+}
+
+a {
+    text-decoration: none;
+    outline: none;
+}
+
+p {
+    text-align: justify;
+}

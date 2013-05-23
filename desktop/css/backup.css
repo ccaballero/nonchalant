@@ -1,0 +1,128 @@
+html, body, p, a {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Courier New",Courier,monospace;
+    font-size: 12px;
+    color: #000000;
+}
+
+a { text-decoration: none; outline: none; }
+p { text-align: justify; }
+
+/* Desktop */
+#desktop {
+    margin: 0px 0px 20px 0px;
+    min-width: 960px;
+    background: -moz-linear-gradient(center top , #00aad4, #55ddff) repeat scroll 0 0 transparent;
+}
+
+/* Bottom panel (taskbar) */
+#panel {
+    min-width: 960px;
+    position: absolute;
+    bottom: 0px;
+    height: 18px;
+    width: 100%;
+    background-color: #cccccc;
+    border: 1px solid #808080;
+    border-collapse: collapse;
+}
+
+#panel td {
+    border-left: 1px solid #808080;
+    text-align: center;
+}
+
+
+
+.window {
+    position: absolute;
+    min-width: 100px;
+    padding-bottom: 18px;
+    background-color: #ffffff;
+    z-index: 2;
+    border: 1px solid #808080;
+}
+
+.window.active {
+    z-index: 3;
+    box-shadow: 1px 1px 10px #404040;
+}
+
+.window.active .border {
+    background: -moz-linear-gradient(center top, #2A7FFF, #5599FF) repeat scroll 0 0 transparent;
+}
+
+.border {
+    height: 18px;
+    background: -moz-linear-gradient(center top, #AAAAAA, #DDDDDD) repeat scroll 0 0 transparent;
+    border-bottom: 1px solid #808080;
+}
+
+.title {
+    float: left;
+    display: inline-block;
+    padding-top: 3px;
+    margin-left: 6px;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.controls {
+    float: right;
+    display: inline-block;
+}
+
+.controls a {
+    margin: 0px 3px 0px 3px;
+    font-size: 14px;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+#home {
+    width: 18px;
+    background-color: #FFFFFF;
+}
+
+.tag {
+    width: 15px;
+}
+
+#tasklist table {
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+
+#panel .task.active {
+    background-color: #B0B0B0;
+}
+
+#layout {
+    width: 18px;
+}
+
+#menu {
+    display: none;
+    position: absolute;
+    background-color: #cccccc;
+    bottom: 19px;
+    left: 0px;
+    border: 1px solid #808080;
+    padding-top: 9px;
+}
+
+#menu li {
+    height: 18px;
+}
+
+#menu li a {
+    padding: 0px 5px 0px 5px;
+}

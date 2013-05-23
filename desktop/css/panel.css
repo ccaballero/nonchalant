@@ -1,0 +1,72 @@
+/* Panel */
+#panel {
+    position: absolute;
+    bottom: 0px;
+    height: 18px;
+    left: 0px;
+    right: 0px;
+    background: -moz-linear-gradient(center top , #CCCCCC, #DDDDDD) repeat scroll 0 0 transparent;
+    border: 1px solid #808080;
+    box-shadow: 0px 0px 10px 0px #606060;
+    z-index: 100;
+    overflow: hidden;
+}
+
+#panel div {
+    height: 18px;
+    float: left;
+    text-align: center;
+    line-height: 20px;
+}
+
+#panel div.home {
+    width: 18px;
+    border-right: 1px solid #808080;
+    background-color: #AADD00;
+}
+
+#panel div.tags {
+    border-right: 1px solid #808080;
+}
+
+#panel div.tags ul {
+    list-style: none;
+}
+
+#panel div.tags ul li {
+    float: left;
+    width: 18px;
+}
+
+#panel div.tags ul li a {}
+
+#panel div.tags ul li.active {}
+#panel div.tags ul li.active a {
+    font-weight: bold;
+}
+
+#panel div.tasks {}
+
+#panel div.tasks ul {
+    list-style: none;
+}
+
+#panel div.tasks ul li {
+    float: left;
+}
+
+#panel div.tasks ul li a {
+    min-width: 18px;
+}
+
+#panel div.tasks ul li.active {
+    background-color: #BFBFBF;
+}
+
+#panel div.tasks ul li.active a {}
+
+#panel div.layout {
+    width: 18px;
+    border-left: 1px solid #808080;
+    float: right;
+}
