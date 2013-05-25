@@ -6,6 +6,7 @@ var width_navigator=function(){
     }else{
         return document.documentElement.clientWidth
     }}
+
 var height_navigator=function(){
     if(window.innerWidth){
         return window.innerWidth

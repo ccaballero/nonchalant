@@ -1,0 +1,31 @@
+/* menu */
+#menu {
+    position: absolute;
+    bottom: 18px;
+    left: 0px;
+    z-index: 50;
+    display: none;
+    box-shadow: 0px 0px 10px 0px #606060;
+    background: -moz-linear-gradient(center top , #CCCCCC, #DDDDDD) repeat scroll 0 0 transparent;
+}
+
+#menu.visible {
+    display: block;
+}
+
+#menu ul {
+    list-style-type: none;
+}
+
+#menu ul li {
+    display: block;
+}
+
+#menu ul li a {
+    float: left;
+    padding: 5px 10px;
+}
+
+#menu ul li a:hover {
+    background: #AADD00;
+}
