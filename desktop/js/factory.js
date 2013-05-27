@@ -4,15 +4,15 @@ WindowFactory=function(title,content,top,left,width,height){
     var w=WindowManager.create(title,content,top,left,width,height);
 
     $('#desktop').append(w.render())
-    $('#panel .tasks ul').append(w.task())
+    $('#taskbar .tasks ul').append(w.task())
 
     $('#desktop div.window[name=x'+WindowManager.active+']').removeClass('active')
-    $('#panel .tasks ul li[name=t'+WindowManager.active+']').removeClass('active')
+    $('#taskbar .tasks ul li[name=t'+WindowManager.active+']').removeClass('active')
 
     WindowManager.active=w.id
 
     $('#desktop div.window[name=x'+w.id+']').addClass('active')
-    $('#panel .tasks ul li[name=t'+w.id+']').addClass('active')
+    $('#taskbar .tasks ul li[name=t'+w.id+']').addClass('active')
 
     $('.window[name=x'+w.id+']')
         .css('top',w.top)
@@ -39,7 +39,7 @@ WindowFactory=function(title,content,top,left,width,height){
         })
     $('.window[name=x'+w.id+'] .minimize').click(function(){
         WindowManager.minimize($(this).parents('.window').attr('name').substring(1))
-        resize_taskbar()
+        Taskbar.resize()
         return false
     })
     $('.window[name=x'+w.id+'] .maximize').click(function(){
@@ -49,12 +49,12 @@ WindowFactory=function(title,content,top,left,width,height){
         }else if(w.status=='maximized'){
             WindowManager.restore(w.id)
         }
-        resize_taskbar()
+        Taskbar.resize()
         return false
     })
     $('.window[name=x'+w.id+'] .close').click(function(){
         WindowManager.close($(this).parents('.window').attr('name').substring(1))
-        resize_taskbar()
+        Taskbar.resize()
         return false
     })
     $('.window[name=x'+w.id+'] .border').click(function(){
@@ -88,5 +88,5 @@ WindowFactory=function(title,content,top,left,width,height){
         }
         return false
     })
-    resize_taskbar()
+    Taskbar.resize()
 }

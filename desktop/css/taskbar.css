@@ -1,5 +1,6 @@
-/* panel */
-#panel {
+/* taskbar */
+
+#taskbar {
     position: absolute;
     bottom: 0px;
     height: 18px;
@@ -12,60 +13,60 @@
     overflow: hidden;
 }
 
-#panel div {
+#taskbar div {
     height: 18px;
     float: left;
     text-align: center;
     line-height: 20px;
 }
 
-#panel div.home {
+#taskbar div.home {
     width: 18px;
     border-right: 1px solid #808080;
     background-color: #AADD00;
 }
 
-#panel div.tags {
+#taskbar div.tags {
     border-right: 1px solid #808080;
 }
 
-#panel div.tags ul {
+#taskbar div.tags ul {
     list-style: none;
 }
 
-#panel div.tags ul li {
+#taskbar div.tags ul li {
     float: left;
     width: 18px;
 }
 
-#panel div.tags ul li a {}
+#taskbar div.tags ul li a {}
 
-#panel div.tags ul li.active {}
-#panel div.tags ul li.active a {
+#taskbar div.tags ul li.active {}
+#taskbar div.tags ul li.active a {
     font-weight: bold;
 }
 
-#panel div.tasks {}
+#taskbar div.tasks {}
 
-#panel div.tasks ul {
+#taskbar div.tasks ul {
     list-style: none;
 }
 
-#panel div.tasks ul li {
+#taskbar div.tasks ul li {
     float: left;
 }
 
-#panel div.tasks ul li a {
+#taskbar div.tasks ul li a {
     min-width: 18px;
 }
 
-#panel div.tasks ul li.active {
+#taskbar div.tasks ul li.active {
     background-color: #BFBFBF;
 }
 
-#panel div.tasks ul li.active a {}
+#taskbar div.tasks ul li.active a {}
 
-#panel div.layout {
+#taskbar div.layout {
     width: 18px;
     border-left: 1px solid #808080;
     float: right;
