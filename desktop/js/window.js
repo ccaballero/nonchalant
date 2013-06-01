@@ -10,7 +10,7 @@ function Window(id,title,content,top,left,width,height){
     this.height=height
     this.status='normal'
     this.render=function(){
-        return '<div name="x'+this.id+'" class="window">'
+        return '<div name="'+config.window.selector+this.id+'" class="window">'
             +'<div class="border">'
             +'<div class="title">'+this.title+'</div>'
             +'<div class="controls">'
@@ -22,7 +22,7 @@ function Window(id,title,content,top,left,width,height){
             +'</div>'
     }
     this.task=function(){
-        return '<li name="t'+this.id+'" class="task">'
+        return '<li name="'+config.taskbar.selector+this.id+'" class="task">'
             +'<a href="">'+this.title+'</a></li>'
     }
 }

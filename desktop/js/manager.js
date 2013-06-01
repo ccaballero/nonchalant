@@ -1,7 +1,7 @@
 /* window manager definition */
 
 var WindowManager=new(function(){
-    this.list=[]
+    this.list={}
     this.count=0
     this.active=0
     this.create=function(title,content,top,left,width,height){
@@ -11,12 +11,12 @@ var WindowManager=new(function(){
     this.minimize=function(id){
         var w=this.list[id]
         w.status='minimized'
-        $('.window[name=x'+id+']').hide()
+        $('.window[name='+config.window.selector+id+']').hide()
     }
     this.maximize=function(id){
         var w=this.list[id]
         w.status='maximized'
-        $('.window[name=x'+id+']')
+        $('.window[name='+config.window.selector+id+']')
             .css('top','0px')
             .css('left','0px')
             .css('width',($('#desktop').width())+'px')
@@ -25,7 +25,7 @@ var WindowManager=new(function(){
     this.restore=function(id){
         var w=this.list[id]
         w.status='normal'
-        $('.window[name=x'+id+']')
+        $('.window[name='+config.window.selector+id+']')
             .css('top',w.top)
             .css('left',w.left)
             .css('width',w.width)
@@ -34,15 +34,15 @@ var WindowManager=new(function(){
         this.activate(id)
     }
     this.close=function(id){
-        $('.window[name=x'+id+']').remove()
-        $('.tasks ul li[name=t'+id+']').remove()
+        $('.window[name='+config.window.selector+id+']').remove()
+        $('.tasks ul li[name='+config.taskbar.selector+id+']').remove()
         this.list[id] = {}
     }
     this.activate=function(id){
-        $('.window[name=x'+this.active+']').removeClass('active')
-        $('.tasks ul li[name=t'+this.active+']').removeClass('active')
-        $('.window[name=x'+id+']').addClass('active')
-        $('.tasks ul li[name=t'+id+']').addClass('active')
+        $('.window[name='+config.window.selector+this.active+']').removeClass('active')
+        $('.tasks ul li[name='+config.taskbar.selector+this.active+']').removeClass('active')
+        $('.window[name='+config.window.selector+id+']').addClass('active')
+        $('.tasks ul li[name='+config.taskbar.selector+id+']').addClass('active')
         this.active=id
     }
 })()
