@@ -6,8 +6,8 @@ class Main extends Generic_Object {
         $this->config = Config::getInstance();
         $this->config->loadConfig('../config/settings.json');
 
-        $this->input = $config->getInput();
-        $this->output = $config->getOutput();
+        $this->input = $this->config->getInput();
+        $this->output = $this->config->getOutput();
 
         $this->memory = Memory::getInstance();
 
@@ -16,7 +16,7 @@ class Main extends Generic_Object {
 
     public function run() {
         $string_instruction = $this->input->getInput();
-        
+
         $instruction = Parse::parseInstruction($string_instruction);
     }
 }

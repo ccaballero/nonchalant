@@ -11,10 +11,10 @@ class Config extends Generic_Object {
         }
         return self::$instance;
     }
-    
+
     public function loadConfig($filename) {
         $array = json_decode(file_get_contents($filename), true);
-        
+
         foreach ($array as $key => $value) {
             $method="set$key";
             $this->$method(new $value());
