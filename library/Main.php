@@ -4,7 +4,7 @@ class Main extends Generic_Object {
 
     public function initialize() {
         $this->config = Config::getInstance();
-        $this->config->loadConfig('../config/settings.json');
+        $this->config->loadConfig(APPLICATION_PATH . '/config/settings.json');
 
         $this->input = $this->config->getInput();
         $this->output = $this->config->getOutput();
@@ -12,11 +12,12 @@ class Main extends Generic_Object {
         $this->memory = Memory::getInstance();
 
         $this->kernel = Kernel::getInstance();
-    }
+        return $this;
+        }
 
     public function run() {
         $string_instruction = $this->input->getInput();
-
-        $instruction = Parse::parseInstruction($string_instruction);
+        echo $string_instruction;
+        $instruction = Parser::parseInstruction($string_instruction);
     }
 }

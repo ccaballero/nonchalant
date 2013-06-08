@@ -1,7 +1,9 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-?>
+class Input_Http_Get implements Input {
+    public function getInput() {
+        if (isset($_GET['command'])) {
+            return $_GET['command'];
+        }
+        return '';
+    }
+}

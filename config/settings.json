@@ -1,5 +1,5 @@
 {
-    "Input": "Input_Http_Post",
+    "Input": "Input_Cli",
     "Output": "Output_Text",
     "Logger": "Log"
 }
