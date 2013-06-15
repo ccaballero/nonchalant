@@ -17,9 +17,20 @@ class Main extends Generic_Object {
 
     public function run() {
         $string_instruction = $this->input->getInput();
-        echo $string_instruction;
-        $instruction = Parser::parseInstruction($string_instruction);
+
+        $sentences = Parser::parseInstruction($string_instruction);
         
+        $stack = new Collections_Stack();
+        foreach ($sentences as $sentence) {
+            $stack->push($sentence);
+        }
         
+        while (!$stack->isEmpty()) {
+            $instruction = $stack->pop();
+            $getopt = Parser::parseArguments($instruction);
+
+            $command = 'Commands_' . ucfirst($getopt['command']);
+            echo $command::main($getopt);
+        }
     }
 }

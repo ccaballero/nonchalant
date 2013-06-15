@@ -51,6 +51,46 @@ class Parser {
     }
 
     public static function parseArguments($string) {
-        
+        $result = array(
+            'command' => '',
+            'options' => array(),
+            'parameters' => array());
+
+        $pieces = preg_split('/ +/', $string);
+
+        $result['command'] = array_shift($pieces);
+
+        //$command = 'Commands_' . ucfirst($this->getCommand());
+        //$input = Term_Command_Abstract::validateOptions(
+        //    $command::$valid_options
+        //);
+
+        for ($index = 0; $index < count($pieces); $index++) {
+            $string = $pieces[$index];
+
+            // large options
+            if (preg_match("/--.+(=.+)?/", $string)) {
+                @list($key, $value) = explode('=', substr($string, 2));
+                    $result['options'][$key] = $value;
+            // larges without parameters
+            } else if (preg_match("/-.=.+/", $string)) {
+                @list($key, $value) = explode('=', substr($string, 1));
+                    $result['options'][$key] = $value;
+            // short options
+            } else if (preg_match('/-.+/', $string)) {
+                for ($i = 1; $i < strlen($string) - 1; $i++) {
+                    $result['options'][$string[$i]] = true;
+                }
+                if ($index + 1 < count($pieces)) {
+                    $result['options'][$string[$i]] = $pieces[$index + 1];
+                    $index++;
+                } else {
+                    $result['options'][$string[$i]] = true;
+                }
+            } else {
+                $result['parameters'][] = $pieces[$index];
+            }
+        }
+        return $result;
     }
 }
