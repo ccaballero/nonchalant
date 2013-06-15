@@ -19,5 +19,7 @@ class Main extends Generic_Object {
         $string_instruction = $this->input->getInput();
         echo $string_instruction;
         $instruction = Parser::parseInstruction($string_instruction);
+        
+        
     }
 }
