@@ -1,6 +1,7 @@
 <?php
 
-class Memory extends Generic_Object {
+class Memory extends Generic_Object
+{
     private static $instance = null;
 
     private function __construct() {}
@@ -12,3 +13,4 @@ class Memory extends Generic_Object {
         return self::$instance;
     }
 }
+

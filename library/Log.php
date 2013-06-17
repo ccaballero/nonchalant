@@ -1,5 +1,7 @@
 <?php
 
-class Log {
+class Log
+{
 
 }
+

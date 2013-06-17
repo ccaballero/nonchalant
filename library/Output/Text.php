@@ -1,5 +1,8 @@
 <?php
 
-class Output_Text {
-    
+class Output_Text implements Output
+{
+    public function getOutput() {
+
+    }
 }

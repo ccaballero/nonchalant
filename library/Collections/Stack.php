@@ -1,6 +1,7 @@
 <?php
 
-class Collections_Stack implements Collections_Lineable {
+class Collections_Stack implements Collections_Lineable
+{
     protected $_data;
 
     public function __construct() {
@@ -11,11 +12,12 @@ class Collections_Stack implements Collections_Lineable {
         return empty($this->_data);
     }
 
-    public function pop() {
-        return array_pop($this->_data);
-    }
-
     public function push($element){
         $this->_data[] = $element;
     }
+
+    public function pop() {
+        return array_pop($this->_data);
+    }
 }
+

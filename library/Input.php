@@ -1,5 +1,7 @@
 <?php
 
-interface Input {
+interface Input
+{
     public function getInput();
 }
+

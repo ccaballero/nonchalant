@@ -1,7 +1,8 @@
 <?php
 
-class Generic_Object {
-    private $_data = array();
+abstract class Generic_Object
+{
+    protected $_data = array();
 
     public function __set($key, $value) {
         $this->_data[$key] = $value;
@@ -33,3 +34,4 @@ class Generic_Object {
         }
     }
 }
+

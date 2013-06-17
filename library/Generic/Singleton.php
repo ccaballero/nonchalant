@@ -1,6 +1,7 @@
 <?php
 
-abstract class Generic_Singleton extends Generic_Object {
+abstract class Generic_Singleton extends Generic_Object
+{
     protected static $instance = null;
 
     protected abstract function __construct();
@@ -12,3 +13,4 @@ abstract class Generic_Singleton extends Generic_Object {
         return self::$instance;
     }
 }
+

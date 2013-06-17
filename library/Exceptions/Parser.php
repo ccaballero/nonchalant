@@ -1,5 +1,7 @@
 <?php
 
-class Exceptions_Parser extends Exception {
+class Exceptions_Parser extends Exception
+{
     
 }
+

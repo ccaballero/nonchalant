@@ -1,30 +1,27 @@
 <?php
 
-class Collections_List implements Collections_Listable {
-    private $array;
-    private $index;
-    
-    public function __construct($array = array()) {
-        $this->array = $array;
-        $this->index = 0;
+class Collections_List implements Collections_Listable
+{
+    protected $_data;
+    protected $_index;
+
+    public function __construct() {
+        $this->_data = array();
+        $this->_index = 0;
     }
-    
-    public function add($element){        
-        $aux = $this->index;
-        $this->array[$aux] = $element;
-        $this->index++;
-        return $aux;
+
+    public function isEmpty() {
+        return empty($this->_data);
     }
-        
+
+    public function add($element) {
+        $this->_data[$this->_index] = $element;
+        $this->_index++;
+        return $this->_index - 1;
+    }
+
     public function remove($index) {
         unset($this->array[$index]);
     }
 }
 
-//$collection = new Collections_List();
-//$value = $collection->add(3);
-//var_dump($collection);
-//$collection->remove($value);
-//var_dump($collection);
-//$value = $collection->add(3);
-//var_dump($collection);

@@ -1,6 +1,7 @@
 <?php
 
-class Config extends Generic_Object {
+class Config extends Generic_Object
+{
     private static $instance = null;
 
     private function __construct() {}
@@ -21,3 +22,4 @@ class Config extends Generic_Object {
         }
     }
 }
+

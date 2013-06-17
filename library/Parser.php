@@ -1,7 +1,7 @@
 <?php
 
-class Parser {
-
+class Parser
+{
     public static function parseInstruction($string) {
         $sentences = array();
         $sentence = '';
@@ -60,11 +60,6 @@ class Parser {
 
         $result['command'] = array_shift($pieces);
 
-        //$command = 'Commands_' . ucfirst($this->getCommand());
-        //$input = Term_Command_Abstract::validateOptions(
-        //    $command::$valid_options
-        //);
-
         for ($index = 0; $index < count($pieces); $index++) {
             $string = $pieces[$index];
 
@@ -94,3 +89,4 @@ class Parser {
         return $result;
     }
 }
+
