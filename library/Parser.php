@@ -10,14 +10,6 @@ class Parser
 
         for ($i = 0; $i < strlen($string); $i++) {
             switch ($string[$i]) {
-                case '0':
-                case '1':
-                case '2':
-                    if ($string[$i + 1] == '>') {
-                        $sentences[] = $sentence;
-                        $sentence = $string[$i];
-                    }
-                    break;
                 case '\\':
                     if (!in_array($string[$i + 1],
                         array('|', '>', ';', '<', '&'))) {
@@ -41,6 +33,13 @@ class Parser
                         $sentence = $string[$i];
                     }
                     break;
+                case '0':
+                case '1':
+                case '2':
+                    if ($string[$i + 1] == '>') {
+                        $sentences[] = $sentence;
+                        $sentence = $string[$i];
+                    }
                 default:
                     $sentence .= $string[$i];
                     break;
@@ -57,7 +56,6 @@ class Parser
             'parameters' => array());
 
         $pieces = preg_split('/ +/', $string);
-
         $result['command'] = array_shift($pieces);
 
         for ($index = 0; $index < count($pieces); $index++) {
@@ -86,6 +84,7 @@ class Parser
                 $result['parameters'][] = $pieces[$index];
             }
         }
+
         return $result;
     }
 }

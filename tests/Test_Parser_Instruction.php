@@ -3,10 +3,14 @@
 include '../library/Parser.php';
 
 $examples = array(
+    array('cal 1 2 3',
+        array('cal 1 2 3')),
+    array('cal 3 4 5',
+        array('cal 3 4 5')),
     array('echo $a',
         array('echo $a')),
     array('echo \'\' > cat',
-        array('echo \'\' ', '> cat')),
+        array('echo \'\' ','> cat')),
     array('echo \'\' >> cat',
         array('echo \'\' ', '>> cat')),
     array('a=\'asdf\'; echo $a',

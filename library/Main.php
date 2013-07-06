@@ -43,10 +43,11 @@ BEGIN;
 
             while (!$stack->isEmpty()) {
                 $instruction = $stack->pop();
-                $getopt = Parser::parseArguments($instruction);
+                $pieces = preg_split('/ +/', $instruction);
 
-                $command = 'Commands_' . ucfirst($getopt['command']);
-                echo $command::main($instruction);
+                $command = ucfirst($pieces[0]);
+                $command = 'Commands_' . $command;
+                echo '<pre>' . $command::main($instruction) . '</pre>';
             }
         }
     }
