@@ -18,19 +18,36 @@ class Main extends Generic_Object
     public function run() {
         $string_instruction = $this->input->getInput();
 
-        $sentences = Parser::parseInstruction($string_instruction);
+        if (empty($string_instruction)) {
+            echo <<<BEGIN
+<html>
+    <head>
+        <title>Nonchalant</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    </head>
+    <body>
+        <form action="" method="post">
+            <input name="command" type="text" />
+            <input type="submit" value="execute"/>
+        </form>
+    </body>
+</html>
+BEGIN;
+        } else {
+            $sentences = Parser::parseInstruction($string_instruction);
 
-        $stack = new Collections_Stack();
-        foreach ($sentences as $sentence) {
-            $stack->push($sentence);
-        }
+            $stack = new Collections_Stack();
+            foreach ($sentences as $sentence) {
+                $stack->push($sentence);
+            }
 
-        while (!$stack->isEmpty()) {
-            $instruction = $stack->pop();
-            $getopt = Parser::parseArguments($instruction);
+            while (!$stack->isEmpty()) {
+                $instruction = $stack->pop();
+                $getopt = Parser::parseArguments($instruction);
 
-            $command = 'Commands_' . ucfirst($getopt['command']);
-            echo $command::main($getopt);
+                $command = 'Commands_' . ucfirst($getopt['command']);
+                echo $command::main($instruction);
+            }
         }
     }
 }
