@@ -1,6 +1,11 @@
 <?php
 
 class Commands_Cal {
+    protected $messages = array(
+        'year' => 'cal: Valor de año no permitido: utilice 1-9999',
+        'month' => 'cal: Valor de mes no permitido: utilice 1-12',
+    );
+
     public static function main($args) {
         $getopt = Parser::parseArguments($args);
         $parameters = $getopt['parameters'];
@@ -21,7 +26,7 @@ class Commands_Cal {
 
                         $months = array();
                         for ($i = 0; $i < 12; $i++) {
-                            $months[] = $cal->print_array_month(mktime(0, 0, 0, $i+1, 1, $year2), false);
+                            $months[] = $cal->print_array_month(mktime(0, 0, 0, $i + 1, 1, $year2), false);
                         }
 
                         for ($i = 0; $i < 12; $i+=3) {

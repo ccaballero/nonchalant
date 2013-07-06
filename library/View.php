@@ -1,6 +1,6 @@
 <?php
 
-class View extends Object {
+class View extends Generic_Object {
 
     public function render($file = '') {
         $tpl = $file;

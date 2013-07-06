@@ -3,14 +3,14 @@
 include '../library/Collections/Lineable.php';
 include '../library/Collections/Queue.php';
 
-$object = new Collections_Queue();
+$memory = new Collections_Queue();
 
 // test of magic setting #1
-$object->push('test1');
-$object->push('test2');
-$object->push('test3');
+$memory->push('test1');
+$memory->push('test2');
+$memory->push('test3');
 
 $expected = 'test1';
-$result = $object->pop();
+$result = $memory->pop();
 
 echo 'test3 ' . ($expected === $result). PHP_EOL;

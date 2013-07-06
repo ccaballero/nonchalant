@@ -18,22 +18,7 @@ class Main extends Generic_Object
     public function run() {
         $string_instruction = $this->input->getInput();
 
-        if (empty($string_instruction)) {
-            echo <<<BEGIN
-<html>
-    <head>
-        <title>Nonchalant</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    </head>
-    <body>
-        <form action="" method="post">
-            <input name="command" type="text" />
-            <input type="submit" value="execute"/>
-        </form>
-    </body>
-</html>
-BEGIN;
-        } else {
+        if (!empty($string_instruction)) {
             $sentences = Parser::parseInstruction($string_instruction);
 
             $stack = new Collections_Stack();
@@ -47,8 +32,20 @@ BEGIN;
 
                 $command = ucfirst($pieces[0]);
                 $command = 'Commands_' . $command;
-                echo '<pre>' . $command::main($instruction) . '</pre>';
+
+//                $history = $command::main($instruction);
+                $result = $command::main($instruction);
+                
+                $history = $this->memory->get('history');
+                $history[] = $result;
+                $this->memory->set('history', $history);
             }
         }
+
+        $view = new View();
+        $view->layout_directory = APPLICATION_PATH . '/templates';
+        
+        $view->history = $this->memory->get('history');
+        echo $view->render('/default.php');
     }
 }
