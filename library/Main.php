@@ -50,12 +50,13 @@ class Main extends Generic_Object
             }
         }
 
+        $template = $this->memory->get('template', 'default');
+
         $view = new View();
         $view->layout_directory = APPLICATION_PATH . '/templates';
 
         $view->ps1 = '#';
         $view->history = $this->memory->get('history', array());
-//        echo $view->render('/jmejia.php');
-        echo $view->render('/crhyst.php');
+        echo $view->render('/' . $template . '.php');
     }
 }

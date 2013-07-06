@@ -28,9 +28,9 @@
         <div id="consola">
             mi consola
         </div>
-        <pre><?php echo implode('', $this->outputs) ?></pre>
+        <pre><?php echo implode(PHP_EOL, $this->history) ?></pre>
         <form action="" method="post">
-            <input name="comando" type="text" />
+            <input name="command" type="text" />
         </form>
     </body>
 </html>

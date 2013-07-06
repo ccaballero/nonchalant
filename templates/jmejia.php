@@ -17,7 +17,7 @@ function activarPrimerControl()
         <pre><?php echo implode(PHP_EOL, $this->history) ?></pre>
         <form name="cmd" action="" method="post">
             <label>
-                <?php echo $this->ps1?>@
+                <?php echo $this->ps1?>
             </label>
             <input name="command" type="text" autocomplete="off" />
         </form>
