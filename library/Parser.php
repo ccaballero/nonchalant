@@ -2,6 +2,7 @@
 
 class Parser
 {
+    // know bug: var=2>command
     public static function parseInstruction($string) {
         $sentences = array();
         $sentence = '';
@@ -19,10 +20,13 @@ class Parser
                     $i++;
                     break;
                 case '|':
-                case '>':
                 case ';':
-                case '<':
                 case '&':
+                    $sentences[] = $sentence;
+                    $sentence = $string[$i];
+                    break;
+                case '>':
+                case '<':
                     if ($string[$i] == $string[$i - 1]
                         || $string[$i - 1] == '0'
                         || $string[$i - 1] == '1'
@@ -39,7 +43,10 @@ class Parser
                     if ($string[$i + 1] == '>') {
                         $sentences[] = $sentence;
                         $sentence = $string[$i];
+                    } else {
+                        $sentence .= $string[$i];
                     }
+                    break;
                 default:
                     $sentence .= $string[$i];
                     break;

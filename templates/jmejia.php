@@ -7,21 +7,19 @@
 <script language="JavaScript">
 function activarPrimerControl()
 {
-  document.cmd.comando.focus();
+  document.cmd.command.focus();
 }
 </script>
     </head>
     
     <body onload="activarPrimerControl()">
         <h1></h1>
-        <pre><?php echo $this->output ?></pre>
+        <pre><?php echo implode(PHP_EOL, $this->history) ?></pre>
         <form name="cmd" action="" method="post">
             <label>
-                <?php echo $this->escape($this->hostname) ?>@
-                <?php echo $this->escape($this->user)?>
-                <?php echo $this->prompt?>
+                <?php echo $this->ps1?>@
             </label>
-            <input name="comando" type="text" autocomplete="off" />
+            <input name="command" type="text" autocomplete="off" />
         </form>
     </body
 </html>

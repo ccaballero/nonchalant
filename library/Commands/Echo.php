@@ -5,10 +5,9 @@ class Commands_Echo {
     public static function main($args) {
         $memory = Memory::getInstance();
         $VARS =$memory->get('vars',array());
-        
+
         $getopt = Parser::parseArguments($args);
         $parameters = $getopt['parameters'];
-
 
         if (!empty($parameters[0])) {
             $result = trim(implode(' ', $parameters));

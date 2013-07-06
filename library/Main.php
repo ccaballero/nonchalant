@@ -31,7 +31,7 @@ class Main extends Generic_Object
 
                 if (preg_match("/[a-zA-Z_][a-zA-Z0-9_]*=.*/", $instruction)) {
                     list($a, $b) = explode('=', $instruction);
-                    
+
                     $vars = $this->memory->get('vars', array());
                     $vars[$a] = $b;
                     $this->memory->set('vars', $vars);
@@ -47,14 +47,15 @@ class Main extends Generic_Object
                     $history[] = $result;
                     $this->memory->set('history', $history);
                 }
-                
             }
         }
 
         $view = new View();
         $view->layout_directory = APPLICATION_PATH . '/templates';
 
+        $view->ps1 = '#';
         $view->history = $this->memory->get('history', array());
-        echo $view->render('/default.php');
+//        echo $view->render('/jmejia.php');
+        echo $view->render('/crhyst.php');
     }
 }

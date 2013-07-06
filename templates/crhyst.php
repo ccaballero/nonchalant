@@ -10,10 +10,10 @@
 
     <body onload="activarPrimerControl()">
         <script language="JavaScript">
-            function activarPrimerControl()
-            {
-                document.comnd.comando.focus();
-            }
+        function activarPrimerControl()
+        {
+            document.cmd.command.focus();
+        }
         </script>
 
         <style>
@@ -28,10 +28,18 @@
         <header>
         </header>
         <article>
-            <pre><?php foreach ($this->outputs as $output) { ?><span class="prompt"><?php echo $this->escape($this->hostname) ?>!<?php echo $this->escape($this->user) ?>&nbsp;<?php echo $this->escape($this->prompt) ?></span><?php echo $output ?><?php } ?></pre>
-            <form action="" method="post">
-                <span class="prompt"><?php echo $this->escape($this->hostname) ?>!<?php echo $this->escape($this->user) ?>&nbsp;<?php echo $this->escape($this->prompt) ?></span>
-                <input id="command" name="comando" type="text" autocomplete="off" onkeypress="this.style.width=((this.value.length + 1) * 8) + 'px';" />
+            <pre>
+                <?php foreach ($this->history as $output) {?>
+                    <span class="prompt">
+                    <?php echo $output ?>
+                    <?php         
+                } ?>
+            </pre>
+            <form name="cmd" action="" method="post">
+                <span class="prompt">
+                    <?php echo $this->ps1; ?>
+                </span>
+                <input id="command" name="command" type="text" autocomplete="off" onkeypress="this.style.width = ((this.value.length + 1) * 8) + 'px';" />
             </form>
         </article>
 
