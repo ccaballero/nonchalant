@@ -34,4 +34,3 @@ class Main extends Generic_Object
         }
     }
 }
-
