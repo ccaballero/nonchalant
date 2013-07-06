@@ -2,9 +2,9 @@
 
 class Main extends Generic_Object
 {
-    public function initialize() {
+    public function initialize($config) {
         $this->config = Config::getInstance();
-        $this->config->loadConfig(APPLICATION_PATH . '/config/settings.json');
+        $this->config->loadConfig(APPLICATION_PATH . '/config/' . $config . '.json');
 
         $this->input = $this->config->getInput();
         $this->output = $this->config->getOutput();

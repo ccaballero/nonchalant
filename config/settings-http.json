@@ -1,0 +1,5 @@
+{
+    "Input": "Input_Http_Get",
+    "Output": "Output_Text",
+    "Logger": "Log"
+}
