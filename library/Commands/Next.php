@@ -1,7 +1,8 @@
 <?php
 
 class Commands_Next {
-    public static function main($getopt) {
+    public static function main($args) {
+	$getopt = Parser::parseArguments($args);
         $parameters = $getopt['parameters'];
         
         $index = rand(0, count($parameters));
