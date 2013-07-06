@@ -1,14 +1,17 @@
 <?php
-// pepe
-class _Echo implements Command {
 
-    public function execute($parameter) {
-        global $VARS;
-        global $OPENED_FILES;
+class Commands_Echo {
 
-        if (!empty($parameter[1])) {
-            unset($parameter[0]);
-            $result = trim(implode(' ', $parameter));
+    public static function main($args) {
+        $memory = Memory::getInstance();
+        $VARS =$memory->get('vars',array());
+        
+        $getopt = Parser::parseArguments($args);
+        $parameters = $getopt['parameters'];
+
+
+        if (!empty($parameters[0])) {
+            $result = trim(implode(' ', $parameters));
             $final = $result;
             if (preg_match("/\\$[a-zA-Z_][a-zA-Z0-9_]*/", $result)) {
                 $vars = array();
@@ -27,9 +30,8 @@ class _Echo implements Command {
                 }
                 $final = preg_replace($regex_vars, $values_vars, $result);
             }
-
-            $OPENED_FILES[1] = $final;
-//        return $final;
+        return $final;
         }
     }
+
 }

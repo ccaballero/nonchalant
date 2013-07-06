@@ -33,9 +33,11 @@ class Memory extends Generic_Object {
         $_SESSION[$namespace] = $object;
     }
 
-    public function get($namespace) {
+    public function get($namespace, $default_value = null) {
         if ($this->exists($namespace)) {
             return $_SESSION[$namespace];
+        } else {
+            return $default_value;
         }
     }
 

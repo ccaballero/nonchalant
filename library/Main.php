@@ -28,24 +28,33 @@ class Main extends Generic_Object
 
             while (!$stack->isEmpty()) {
                 $instruction = $stack->pop();
-                $pieces = preg_split('/ +/', $instruction);
 
-                $command = ucfirst($pieces[0]);
-                $command = 'Commands_' . $command;
+                if (preg_match("/[a-zA-Z_][a-zA-Z0-9_]*=.*/", $instruction)) {
+                    list($a, $b) = explode('=', $instruction);
+                    
+                    $vars = $this->memory->get('vars', array());
+                    $vars[$a] = $b;
+                    $this->memory->set('vars', $vars);
+                } else {
+                    $pieces = preg_split('/ +/', $instruction);
 
-//                $history = $command::main($instruction);
-                $result = $command::main($instruction);
+                    $command = ucfirst($pieces[0]);
+                    $command = 'Commands_' . $command;
+
+                    $result = $command::main($instruction);
+
+                    $history = $this->memory->get('history', array());
+                    $history[] = $result;
+                    $this->memory->set('history', $history);
+                }
                 
-                $history = $this->memory->get('history');
-                $history[] = $result;
-                $this->memory->set('history', $history);
             }
         }
 
         $view = new View();
         $view->layout_directory = APPLICATION_PATH . '/templates';
-        
-        $view->history = $this->memory->get('history');
+
+        $view->history = $this->memory->get('history', array());
         echo $view->render('/default.php');
     }
 }
