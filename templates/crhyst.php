@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>---NonchaLant---</title>
-        <link href="css/crhyst/css.css" media="screen" rel="stylesheet" type="text/css" />
+        <link href="<?php echo $this->template_dir . '/style.css' ?>" media="screen" rel="stylesheet" type="text/css" />
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     </head>
 
@@ -18,7 +18,7 @@
 
         <style>
             body
-            { background-image: url('img/crhyst/crhyst.jpg');
+            { background-image: url('<?php echo $this->template_dir . '/crhyst.jpg' ?>');
               background-repeat: no-repeat;
               background-attachment: fixed;
               background-position: 50% 0%;

@@ -4,7 +4,7 @@
 }
 body {
   font-family : Verdana;
-  background-image : url("../../img/jmejia/fondo.jpg");
+  background-image : url("fondo.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: 100% 50%;

@@ -2,8 +2,8 @@
     <head>
         <title>Nonchalant</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel=stylesheet href="css/jmejia/reset.css" type="text/css">
-        <link rel=stylesheet href="css/jmejia/style.css" type="text/css">
+        <link rel=stylesheet href="<?php echo $this->template_dir . '/reset.css' ?>" type="text/css">
+        <link rel=stylesheet href="<?php echo $this->template_dir . '/style.css' ?>" type="text/css">
 <script language="JavaScript">
 function activarPrimerControl()
 {

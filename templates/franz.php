@@ -8,7 +8,8 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link rel=stylesheet href="css/franz/style.css" type="text/css">
+        
+	<link rel=stylesheet href="<?php echo $this->template_dir . '/style.css' ?>" type="text/css">
 	<script language="JavaScript">
 	    function activarPrimerControl() {
 		document.cmd.command.focus();
