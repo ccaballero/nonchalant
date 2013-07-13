@@ -4,7 +4,8 @@ class Main extends Generic_Object
 {
     public function initialize($config) {
         $this->config = Config::getInstance();
-        $this->config->loadConfig(APPLICATION_PATH . '/config/' . $config . '.json');
+        $this->config->loadConfig(
+            APPLICATION_PATH . '/config/' . $config . '.json');
 
         $this->input = $this->config->getInput();
         $this->output = $this->config->getOutput();
@@ -54,7 +55,7 @@ class Main extends Generic_Object
 
         $view = new View();
         $view->layout_directory = APPLICATION_PATH . '/templates';
-
+        $view->template_dir = '/templates/' . $template;
         $view->ps1 = '#';
         $view->history = $this->memory->get('history', array());
         echo $view->render('/' . $template . '.php');

@@ -4,7 +4,8 @@
         <meta http-equiv="Content-Type"
               content="text/html; charset=utf-8" />
         <link href="docs/scesi/nonchalant.png" rel="icon" />
-        <link href="css/carlos/style.css" media="screen"
+        <link href="<?php echo $this->template_dir . '/style.css' ?>"
+              media="screen"
               rel="stylesheet" type="text/css" />
     </head>
     <body class="c3">
