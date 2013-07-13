@@ -52,6 +52,4 @@ class Memory extends Generic_Object {
             unset($_SESSION[$namespace]);
         }
     }
-
 }
-
