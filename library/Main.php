@@ -13,6 +13,13 @@ class Main extends Generic_Object
         $this->memory = Memory::getInstance();
 
         $this->kernel = Kernel::getInstance();
+        
+        // setting of default vars
+        $this->memory->set('current_directory', '/');
+
+        $root = new FS_Tree_Files();
+        $this->memory->set('fs', $root);
+        
         return $this;
     }
 

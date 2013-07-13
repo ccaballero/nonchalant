@@ -1,11 +1,11 @@
 <?php
-// franz
-class Ls
+
+class Commands_Ls
 {
-    public function main() {
+    public static function main() {
         $files = array();
 
-        if ($handle = opendir(translate('/'))) {
+        if ($handle = opendir(Utils::translate('/'))) {
             while (false !== ($entry = readdir($handle))) {
                 if (substr($entry, 0, 1) <> '.') {
                     $files[] = $entry;
@@ -16,6 +16,6 @@ class Ls
         closedir($handle);
         sort($files);
         
-        echo implode(' ', $files);
+        return implode(' ', $files);
     }
 }
