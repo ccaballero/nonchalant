@@ -1,0 +1,54 @@
+/* 
+    Document   : style
+    Created on : 10/07/2013, 12:35:58
+    Author     : franz
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+body{
+    /*font: oblique bold 120% cursi;*/
+    font-size: large;
+    background: url("../../img/franz/cantuta.JPG");
+    background-repeat: no-repeat;
+    color: #ffffff;
+    
+}
+div.transbox{
+    margin:auto;
+    width:60%;
+    height:380px;
+    /*margin:30px 50px;*/
+    background-color: #404040;
+    border:1px solid black;
+    opacity:0.6;
+    filter:alpha(opacity=60);
+    overflow: auto;
+    box-shadow: 10px 10px 5px #404040;
+    border-color: rgba(255, 255, 255, 0.75);
+    /*Importante*/
+    /*background: rgba(255, 255, 255, 0.2);*/ 
+    border-radius: 0.9em;
+    
+}
+/*div.transbox p{
+    margin:30px 40px;
+    font-weight:bold;
+    color: #b0e0e6;
+    border: none;
+}*/
+div.comando{
+    /*width:100%;*/
+    background-color: #202020;
+    color: teal;
+}
+input{
+    border: none;
+    width:95%;
+    background-color: #202020;
+    color: white;
+}
