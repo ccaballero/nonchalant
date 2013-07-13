@@ -1,7 +1,7 @@
 <?php
 
 defined('APPLICATION_PATH') ||
-        define('APPLICATION_PATH', realpath(dirname(__FILE__)));
+        define('APPLICATION_PATH', realpath(dirname(__FILE__) . '/..'));
 
 set_include_path(implode(PATH_SEPARATOR, array(
     realpath(APPLICATION_PATH . '/library'),

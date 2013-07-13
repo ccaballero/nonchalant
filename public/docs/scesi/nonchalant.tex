@@ -1,0 +1,203 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{textcomp}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8x]{inputenc}
+
+\usepackage[pdftex]{graphicx}
+\usepackage{pifont}
+
+\usepackage[
+pdfauthor={Carlos Caballero Burgoa},%
+pdftitle={Proyecto nonchalant},%
+colorlinks,%
+citecolor=black,%
+filecolor=black,%
+linkcolor=black,%
+%urlcolor=black
+pdftex]{hyperref}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+
+% Para la primera página
+\fancypagestyle{plain}{
+\fancyhead[l]{}
+\fancyhead[r]{}
+\fancyhead[c]{}
+\renewcommand{\headrulewidth}{0.5pt}
+\fancyfoot[l]{SCESI \\ Sociedad Científica de Estudiantes de Sistemas e
+Informática}
+\fancyfoot[c]{}
+\fancyfoot[r]{\thepage/\pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.5pt}}
+
+% Para el resto de páginas
+\lhead{Proyecto nonchalant}
+\chead{}
+\rhead{\includegraphics[width=0.1\textwidth]{scesi.png}}
+\renewcommand{\headrulewidth}{0.4pt}
+\lfoot{SCESI \\ Sociedad Científica de Estudiantes de Sistemas e Informática\\
+\url {http://scesi.fcyt.umss.edu.bo}}
+\cfoot{}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\footrulewidth}{0.4pt}
+
+\title{\bf nonchalant}
+\author{
+    Carlos Eduardo Caballero Burgoa (jacobian) \\
+    Juan Pablo Mejía Veizaga (jmejia) \\
+    Vladimir Céspedes López (vladwelt) \\
+    José Valdivia Ignacio (pepex system V) \\
+    Franz López Choque (aquafranx) \\
+    Elvis Rogelio Ramírez Iriarte (elvikito) \\
+}
+
+\begin{document}
+\maketitle
+\begin{center}\includegraphics[width=0.48\textwidth]
+{nonchalant.png}\end{center}
+\begin{center}\url {http://scesi.fcyt.umss.edu.bo}\end{center}
+\pagebreak
+
+\tableofcontents
+\pagebreak
+
+\section{Introducción}
+Desde los primeros años de la computación existió el problema de interacción
+entre el usuario y los programas, si bien se crearon una multitud de
+mecanismos para solucionar estos inconvenientes, uno de estos métodos ha
+perdurado hasta nuestros días, esa es la linea de comandos.
+
+La contraparte de la linea de comandos (CLI) es la interfaz gráfica de usuario
+(GUI) que ofrece una estética mejorada y una mayor simplificación, a costa de
+un mayor consumo de recursos computacionales, y, en general, de una reducción
+de la funcionalidad alcanzable. Asimismo aparece el problema de una mayor
+vulnerabilidad por complejidad.\footnote{Línea de comandos:
+https://es.wikipedia.org/wiki/Línea\_de\_comandos.}
+
+En este documento se plantea la construcción de una linea de comandos que
+pueda ser desplegada como una aplicación web. A partir de esta forma de
+interfaz, construir las funcionalidades necesarias del lado del servidor para
+tener un pequeño conjunto de las tareas cotidianas del kernel de un sistema
+operativo.
+
+\section{Antecedentes}
+Hace años que los fabricantes de sistemas operativos —como Microsoft o Apple—
+dedican ingentes recursos a ocultar cómo funcionan realmente los ordenadores,
+se supone que con la idea de simplificar su uso. Para ello, algunos de sus
+mejores ingenieros han inventado toda clase de metáforas visuales e interfaces
+gráficas, lo cual ha permitido que mucha gente se acerque a los ordenadores
+personales sin sentir pánico o sin provocar grandes gastos de formación de
+personal a sus empresas. Pero, lamentablemente, construir ese muro de
+metáforas en forma de interfaz gráfica entre el ordenador y el usuario
+(conocida como GUI) ha tenido un coste social y cultural muy notable, al
+contribuir decisivamente a que la tecnología que subyace al ordenador se
+perciba como algo mágico, sin conexión alguna entre causas y efectos,
+recubriendo de un formidable manto de ignorancia todo lo que realmente
+sucede.\cite{Stephenson}
+
+Yéndonos mas hacia el terreno de lo local, una de las mayores brechas
+observadas es el escaso acceso a medio físicos computacionales, para el
+aprendizaje de sistemas operativos, y mas propiamente para el acceso a una
+linea de comandos tipo UNIX, esto conlleva a una insuficiente formación acerca
+de las funciones disponibles en un sistema operativo.
+
+Aun entre aquellos cuyo destino pretendido es el estudio de las ciencias de la
+computación, existe el problema de la complejidad del lenguaje nativo
+(Lenguaje C) y las arquitecturas de un sistema operativo moderno, lo que en
+gran medida dificulta el aprendizaje de las instrucciones básicas de la linea
+de comandos y de su funcionamiento a aquellos que aún están comenzando sus
+estudios.
+
+Es notorio en este punto que la escasa disponibilidad de medios educativos
+alternativos a los tradicionales para el aprendizaje de sistemas operativos es
+una de las mayores necesidades para evitar que se tenga un conocimiento muy
+superficial del tema.
+
+\section{Definición del Problema}
+Como se mencionó anteriormente, las GUIs han opacado el uso de la linea de
+comandos, consecuencia de esto existe una escasez de conocimiento acerca de
+como desempeñarse delante de una terminal, y por ende se ha perdido cierta
+parte del conocimiento mismo del funcionamiento de un sistema operativo
+reduciendo las posibilidades de un eficiente aprovechamiento de las funciones
+disponibles que este posee.
+
+También se ve un falta de fomento hacia los estudiantes que ocasiona que estos
+no se atrevan a usar la linea de comandos como un habito formal, siendo una
+carencia preocupante, especialmente para aquellos que estudian alguna rama
+afín a las ciencias de la computación, esto hace que a larga aquellos
+requieran siempre de una interfaz de alto nivel para la realización de sus
+tareas, es decir, se crea una dependencia de herramientas poco versátiles y
+muy especializadas.
+
+A todo esto se suma la inexistencia de una herramienta libre (algo que
+cualquier usuario puede utilizar, instalar, y modificar) con las capacidades
+necesarias para la extensión de las funcionalidades de un sistema operativo.
+
+Por lo mencionado se define el problema como:
+
+\emph{“El desconocimiento de las funciones de la linea de comandos ocasiona un
+escaso interés en el uso, administración, y automatización de tareas por medio
+de esta.”}
+
+\section{Objetivo General}
+Reescribir el conjunto funciones básicas de un sistema operativo, de tal forma
+que pueda estructurarse una linea de comandos, para así poder facilitar el
+entendimiento de las funciones que esta posee de manera eficaz.
+
+\section{Objetivos Específicos}
+\begin{itemize}
+\item Crear una interface de linea de comandos que pueda ser desplegada por
+medio de un cliente Web.
+\item Crear un conjunto básico de llamadas al sistema (syscalls) de modo que
+estas puedan enriquecer la variedad de instrucciones posibles de la linea de
+comandos.
+\item Crear un conjunto básico de instrucciones que provean a la aplicación de
+la funcionalidad básica y cotidiana en los sistemas operativos.
+\item Diseñar e implementar una arquitectura de software que permita extender
+el conjunto de funcionalidades establecidas.
+\item Proveer a la aplicación construida de una licencia que permita la
+instalación, distribución, y modificación de su código fuente.
+\end{itemize}
+
+\section{Herramientas}
+Siendo este un proyecto creado por el grupo PHP de la Sociedad Científica de
+Estudiantes de Sistemas e Informática (SCESI), se presenta obvio el uso del
+lenguaje PHP en su versión 5.3 o superior.
+
+Al comienzo de la etapa de codificación se planteo el aprovechamiento de las
+librerías provistas por el framework de desarrollo de aplicaciones Zend, pero
+a causa del conjunto heterogéneo de personas que componen el grupo de PHP se
+opto por implementar todas las características con funciones puras del
+lenguaje PHP.
+
+Se utilizará cualquier sistema operativo que posea una terminal tipo UNIX, en
+este caso, cualquier distribución del sistema operativo GNU/Linux.
+
+En esta primera etapa del proyecto no se hará uso intensivo del lenguaje
+Javascript, solo se utilizara lo básico del lenguaje HTML, un poco de
+javascript utilitario y un poco de CSS simple.
+
+\section{Justificación}
+Este proyecto posee intrínsecamente cualidades educativas, primeramente para
+el grupo de PHP, esta el aprendizaje sobre la construcción de aplicaciones web
+mas complejas, haciendo uso de las funciones que posee el lenguaje para el
+diseño de arquitecturas orientadas a objetos.
+
+También se encuentra inherentemente el aprendizaje avanzado de la linea de
+comandos, para el mismo grupo de PHP, y la creación de una herramienta para la
+introducción al estudio de sistemas operativos.
+
+\begin{thebibliography}{99}
+
+\bibitem{Stephenson} Stephenson, Neal (1999).\\
+En el principio. . . fue la línea de comandos.\\
+
+\end{thebibliography}
+
+\end{document}
