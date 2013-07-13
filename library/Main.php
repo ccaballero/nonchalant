@@ -19,6 +19,9 @@ class Main extends Generic_Object
 
         $root = new FS_Tree_Files();
         $this->memory->set('fs', $root);
+        
+        $opened_files = new Collections_List();
+        $this->memory->set('opened_files', $opened_files);
 
         return $this;
     }
