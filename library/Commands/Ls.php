@@ -16,6 +16,6 @@ class Commands_Ls
         closedir($handle);
         sort($files);
         
-        return implode(' ', $files);
+        echo implode(' ', $files);
     }
 }

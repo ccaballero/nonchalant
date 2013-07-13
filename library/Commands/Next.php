@@ -15,6 +15,6 @@ class Commands_Next {
                 . ' and the co-pilot is: '
                 . array_pop($parameters);
 
-        return $result;
+        echo $result;
     }
 }

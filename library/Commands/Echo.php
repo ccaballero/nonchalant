@@ -29,8 +29,8 @@ class Commands_Echo {
                 }
                 $final = preg_replace($regex_vars, $values_vars, $result);
             }
-        return $final;
+            
+            echo $final;
         }
     }
-
 }

@@ -28,19 +28,17 @@ class Commands_Template {
 
         switch (count($parameters)) {
             case 0:
-                return $tpl;
+                echo $tpl;
             case 1:
                 $new_template = $parameters[0];
 
                 $available_templates = $template->list_files();
                 if (in_array($new_template . '.php', $available_templates)) {
                     $memory->set('template', $new_template);
-                    return 'template changed for ' . $new_template;
+                    echo 'template changed for ' . $new_template;
                 } else {
-                    return 'template not found!!';
+                    echo 'template not found!!';
                 }
-            default:
-                return;
         }
     }
 

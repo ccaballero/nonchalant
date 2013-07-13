@@ -14,6 +14,6 @@ class Commands_Set {
         }
 
         $result = implode(PHP_EOL, $result);
-        return $result;
+        echo $result;
     }
 }

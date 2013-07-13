@@ -7,6 +7,6 @@
 // > static calling for main method
 class Commands_HelloWorld {
     public static function main() {
-        return 'Hello World';
+        echo 'Hello World';
     }
 }

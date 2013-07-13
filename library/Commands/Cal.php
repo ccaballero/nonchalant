@@ -85,7 +85,7 @@ class Commands_Cal {
                 break;
         }
         
-        return $salida;
+        echo $salida;
     }
     
     private function print_array_month($time, $print_year = true) {

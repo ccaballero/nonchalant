@@ -13,13 +13,13 @@ class Main extends Generic_Object
         $this->memory = Memory::getInstance();
 
         $this->kernel = Kernel::getInstance();
-        
+
         // setting of default vars
         $this->memory->set('current_directory', '/');
 
         $root = new FS_Tree_Files();
         $this->memory->set('fs', $root);
-        
+
         return $this;
     }
 
@@ -48,12 +48,21 @@ class Main extends Generic_Object
 
                     $command = ucfirst($pieces[0]);
                     $command = 'Commands_' . $command;
-
-                    $result = $command::main($instruction);
+                    
+                    ob_start();
+                    ob_implicit_flush(false);
+                    
+                    if (class_exists($command)) {
+                        $command::main($instruction);
+                    } else {
+                        echo 'nch: ' . $pieces[0] . ': no se encontró la orden';
+                    }
+                    
+                    $result = ob_get_clean();
 
                     $history = $this->memory->get('history', array());
                     $history[] = $result;
-                    $this->memory->set('history', $history);
+                    $this->memory->set('history', $history);                        
                 }
             }
         }

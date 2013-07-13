@@ -14,7 +14,5 @@ class Commands_Unset {
         }
         
         $memory->set('vars', $vars);
-
-        return;
     }
 }
