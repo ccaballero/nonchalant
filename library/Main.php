@@ -85,7 +85,7 @@ class Main extends Generic_Object
         $view = new View();
         $view->layout_directory = APPLICATION_PATH . '/templates';
         $view->template_dir = '/templates/' . $template;
-        $view->ps1 = '#';
+        $view->ps1 = 'nch #';
         $view->history = $this->memory->get('history', array());
         echo $view->render('/' . $template . '.php');
     }
