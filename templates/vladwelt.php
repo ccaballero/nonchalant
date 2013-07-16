@@ -16,7 +16,7 @@
                 src="<?php echo $this->template_dir . '/vladwelt.js' ?>"></script>
     </head>
     <body class="c3">
-        <div id="header" />
+        
         <div id="wrapper">
                 <div id="main">
                     <div id="title">&nbsp;</div>
@@ -31,7 +31,7 @@
                                    onkeypress="this.style.width=((this.value.length + 1) * 8) + 'px';" />
                         </form>
                 </div>
-            </div>
+ 
         </div>
     </body>
 </html>
