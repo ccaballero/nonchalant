@@ -11,7 +11,7 @@
               media="screen"
               rel="stylesheet" type="text/css" />
     </head>
-    <body class="c3">
+    <body class="c4">
         <div id="header" />
         <div id="wrapper">
             <div id="wrapper2">
@@ -19,7 +19,7 @@
                 <?php foreach ($this->history as $output) { ?>
                     <pre><?php echo $output ?></pre>
                 <?php } ?>
-                    <form action="" method="post">
+                    <form action="/" method="post">
                         <span class="prompt"><?php echo $this->ps1 ?></span>
                         <input id="command" name="command"
                                type="text" autocomplete="off"
