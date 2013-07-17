@@ -26,7 +26,9 @@ ob_implicit_flush(false);
 $class = 'Tests_' . ucfirst(strtolower($test));
 $ob_test = new $class();
 $ob_test->header();
+$ob_test->pre();
 $ob_test->test();
+$ob_test->post();
 $ob_test->header();
 $result_test = PHP_EOL . ob_get_clean();
 

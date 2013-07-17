@@ -28,6 +28,9 @@ class Test
     
     private function _assert($input, $expected) {
         // TODO
-        return $input == $expected;
+        return $input === $expected;
     }
+    
+    public function pre() {}
+    public function post() {}
 }
