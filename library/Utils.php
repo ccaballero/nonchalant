@@ -4,7 +4,13 @@ class Utils
 {
 
     public static function split_path($path) {
-        $real_path = absolute($path);
+        $real_path = Utils::canonical($path);
+	$result = explode('/', $real_path);
+	$result[0] = '/';
+	if (end($result) == '') {
+	    array_pop ($result);
+	} 
+	return $result;
     }
 
     public static function translate($path) {
