@@ -1,0 +1,4 @@
+RewriteEngine on
+
+RewriteRule ^test/(.*)?$ test.php?test=$1
+

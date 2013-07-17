@@ -1,5 +1,0 @@
-echo asf
-A=asdf
-echo $asdf
-B=qwer
-echo $A $B

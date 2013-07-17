@@ -2,16 +2,24 @@
 
 class Main extends Generic_Object
 {
-    public function initialize($config) {
-        $this->config = Config::getInstance();
-        $this->config->loadConfig(
-            APPLICATION_PATH . '/config/' . $config . '.json');
+    public function Main($config = null) {
+        $this->setConfig($config);
+    }
 
-        $this->input = $this->config->getInput();
-        $this->output = $this->config->getOutput();
+    public function setConfig($config) {
+        if (!empty($config)) {
+            $this->config = Config::getInstance();
+            $this->config->loadConfig(
+                APPLICATION_PATH . '/config/' . $config . '.json');
+            $this->input = $this->config->getInput();
+            $this->output = $this->config->getOutput();
+        }
+    }
+
+    public function initialize($config = null) {
+        $this->setConfig($config);
 
         $this->memory = Memory::getInstance();
-
         $this->kernel = Kernel::getInstance();
 
         // setting of default vars
@@ -32,9 +40,16 @@ class Main extends Generic_Object
         return $this;
     }
 
-    public function run() {
-        $string_instruction = $this->input->getInput();
+    public function run($string_instruction = '') {
+        if ($this->config == null) {
+            throw new Exception('config file not defined');
+        }
 
+        if (empty($string_instruction)) {
+            $string_instruction = $this->input->getInput();
+        }
+
+        $result = '';
         if (!empty($string_instruction)) {
             $sentences = Parser::parseInstruction($string_instruction);
 
@@ -68,18 +83,30 @@ class Main extends Generic_Object
                     }
 
                     $result = ob_get_clean();
-
-                    $history = $this->memory->get('history', array());
-                    if ($history <> null) {
-                        $result = $string_instruction . PHP_EOL . $result;
-                    }
-                    $history[] = $result;
-
-                    $this->memory->set('history', $history);
                 }
             }
         }
 
+        $this->instruction = $string_instruction;
+        $this->result = $result;
+        return $this;
+    }
+    
+    public function render($render_instruction = true) {
+        $history = $this->memory->get('history', array());
+        if ($history <> null) {
+            $result = '';
+            if ($render_instruction) {
+                $result .= $this->instruction . PHP_EOL;
+            }
+            $result .= $this->result;
+        } else {
+            $result = '';
+        }
+        $history[] = $result;
+
+        $this->memory->set('history', $history);
+        
         $template = $this->memory->get('template', 'default');
 
         $view = new View();
