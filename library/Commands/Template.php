@@ -23,7 +23,8 @@ class Commands_Template {
                 $list[] = substr($templates, 0, -4);
             }
 
-            return implode(PHP_EOL, $list);
+            echo implode(PHP_EOL, $list);
+            return;
         }
 
         switch (count($parameters)) {
