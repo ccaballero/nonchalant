@@ -40,5 +40,4 @@ class Tests_Splitpath extends Test {
             );
         }
     }
-
 }

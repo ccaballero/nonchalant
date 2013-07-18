@@ -96,3 +96,26 @@ a:focus, input:focus {
     width: 99%;
     height: 20.0em;
 }
+
+/* colors in shell */
+.regular { font-weight: normal; }
+.bold { font-weight: bold; }
+.underline { text-decoration: underline; }
+
+.text-black { color: #000000; }
+.text-red { color: #ff0000; }
+.text-green { color: #00ff00; }
+.text-yellow { color: #ffff00; }
+.text-blue { color: #0000ff; }
+.text-purple { color: #ff00ff; }
+.text-cyan { color: #00ffff; }
+.text-white { color: #ffffff; }
+
+.background-black { color: #000000; }
+.background-red { color: #ff0000; }
+.background-green { color: #00ff00; }
+.background-yellow { color: #ffff00; }
+.background-blue { color: #0000ff; }
+.background-purple { color: #ff00ff; }
+.background-cyan { color: #00ffff; }
+.background-white { color: #ffffff; }

@@ -91,7 +91,7 @@ class Main extends Generic_Object
         $this->result = $result;
         return $this;
     }
-    
+
     public function render($render_instruction = true) {
         $history = $this->memory->get('history', array());
         if ($history <> null) {
@@ -105,15 +105,21 @@ class Main extends Generic_Object
         }
         $history[] = $result;
 
+        // color management
+        $color = array();
+        foreach ($history as $entry) {
+            $color[] = Utils::transform_color($entry);
+        }
+
         $this->memory->set('history', $history);
-        
+
         $template = $this->memory->get('template', 'default');
 
         $view = new View();
         $view->layout_directory = APPLICATION_PATH . '/templates';
         $view->template_dir = '/templates/' . $template;
         $view->ps1 = 'nch #';
-        $view->history = $this->memory->get('history', array());
+        $view->history = $color;
         echo $view->render('/' . $template . '.php');
     }
 }

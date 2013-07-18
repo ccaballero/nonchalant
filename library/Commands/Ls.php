@@ -23,7 +23,12 @@ class Commands_Ls
         if ($handle = opendir($path)) {
             while (false !== ($entry = readdir($handle))) {
                 if (substr($entry, 0, 1) <> '.') {
-                    $files[] = $entry;
+                    
+                    if (is_dir($path . '/' . $entry)) {
+                        $files[] = '\033[0;34m' . $entry . '/';
+                    } else {
+                        $files[] = '\033[0;30m' . $entry;
+                    }
                 }
             }
         }
