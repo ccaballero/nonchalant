@@ -8,7 +8,7 @@ class Commands_Ls
 
         $memory = Memory::getInstance();
         $directories = $memory->get('directories');
-        
+
         switch (count($parameters)) {
             case 0:
                 $path = Utils::translate($directories['current']);
@@ -17,13 +17,13 @@ class Commands_Ls
                 $path = Utils::translate($parameters[0]);
                 break;
         }
-        
+
         $files = array();
-        
+
         if ($handle = opendir($path)) {
             while (false !== ($entry = readdir($handle))) {
                 if (substr($entry, 0, 1) <> '.') {
-                    
+
                     if (is_dir($path . '/' . $entry)) {
                         $files[] = '\033[0;34m' . $entry . '/';
                     } else {
@@ -35,7 +35,7 @@ class Commands_Ls
 
         closedir($handle);
         sort($files);
-        
+
         echo implode(' ', $files);
     }
 }

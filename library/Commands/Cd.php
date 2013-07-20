@@ -15,12 +15,24 @@ class Commands_Cd
                 $memory->set('directories', $directories);
                 break;
             default:
-                $destination = $parameters[0];
-                if (Utils::file_exists($destination)) {
-                    $directories = $memory->get('directories');
-                    $directories['current'] = Utils::absolute($destination);
-                    $memory->set('directories', $directories);
+                $d1 = $parameters[0];
+                $d2 = Utils::absolute($d1);
+                $d3 = Utils::split_path($d2);
+                
+                $node = $memory->get('fs');
+                foreach ($d3 as $directory) {
+                    if ($node->exists($directory)) {
+                        $node = $node->getChild($directory);
+                    } else {
+                        echo 'nch: cd: ' . $d1 . ': '
+                            . 'No existe el fichero o el directorio';
+                        return;
+                    }
                 }
+                
+                $directories = $memory->get('directories');
+                $directories['current'] = $d2;
+                $memory->set('directories', $directories);
         }
     }
 }

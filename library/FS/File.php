@@ -1,7 +1,7 @@
 <?php
 
 interface FS_File {
-    public function creat($name, $node);
+    public function creat();
     public function open($file, $how);
     public function close($fd);
     public function read($fd, $length);

@@ -4,12 +4,21 @@ class FS_File_Files extends FS_File_Default {
     private $real_fd;
     private $virtual_fd;
     private $offset;
+    private $name;
+    private $parent;
 
-    public function __construct(Collections_Listable $opened_files, 
-                                $attribute = null) {
+    public function __construct(
+            $name, $parent,
+            $opened_files = null, $attribute = null) {
         parent::__construct($opened_files, $attribute);
+        $this->name = $name;
+        $this->parent = $parent;
     }
-    
+
+    public function creat() {
+        return fopen(Utils::translate($this->getPath()), 'w');
+    }
+
     public function open($file, $mode) {
         $this->real_fd = fopen($file, $mode);
         $this->virtual_fd = $this->opened_files->add($file);
@@ -20,11 +29,11 @@ class FS_File_Files extends FS_File_Default {
 
     public Function close($fd) {
         $this->offset = null;
-        
+
         $this->opened_files->remove($this->virtual_fd);
         fclose($this->real_fd);
     }
-    
+
     public function read($fd, $length) {
         if (is_int($length) && $length >= 0) {
             $offset = $this->offset;
@@ -41,9 +50,7 @@ class FS_File_Files extends FS_File_Default {
     public function closedir($dir) {
 
     }
-    public function creat($name, $node) {
 
-    }
     public function lseek($fd, $offset, $whence) {
 
     }
@@ -58,6 +65,21 @@ class FS_File_Files extends FS_File_Default {
 
     }
     public function sync() {
+        if(!file_exists($this->getPath())){
+            $this->creat();
+        }
+    }
+    
+    public function getPath() {
+        $paths = array($this->name);
+        $node = $this->parent;
 
+        while ($node != null) {
+            $paths[] = $node->name;
+            $node = $node->parent;
+        }
+        
+        $paths = array_reverse($paths);
+        return implode('/', $paths);
     }
 }

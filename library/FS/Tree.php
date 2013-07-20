@@ -7,4 +7,5 @@ interface FS_Tree {
     public function link($oldpath, $newPath);
     public function unlink($path);
     public function symlink($oldPath,$newPath);
+    public function sync();
 }

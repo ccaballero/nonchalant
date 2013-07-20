@@ -31,9 +31,9 @@ class Main extends Generic_Object
             $this->memory->set('directories', $directories);
         }
 
-        $root = new FS_Tree_Files();
+        $root = new FS_Tree_Files('/', null);
         $this->memory->set('fs', $root);
-
+        
         $opened_files = new Collections_List();
         $this->memory->set('opened_files', $opened_files);
 
