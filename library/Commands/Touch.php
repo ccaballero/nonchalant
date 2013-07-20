@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author: Franz Lopez - Jazz
+ */
+
 class Commands_Touch {
     public static function main($args) {
         $getopt = Parser::parseArguments($args);

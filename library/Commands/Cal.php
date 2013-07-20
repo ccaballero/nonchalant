@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author: Jmejia - Jazz
+ */
+
 class Commands_Cal {
     protected $messages = array(
         'year' => 'cal: Valor de año no permitido: utilice 1-9999',

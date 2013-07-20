@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author: Juan Pablo Mejia - Vladimir Cespedes
+ */
+
 class Commands_Echo {
 
     public static function main($args) {
