@@ -10,31 +10,45 @@
         <link href="<?php echo $this->template_dir . '/style.css' ?>"
               media="screen"
               rel="stylesheet" type="text/css" />
+        <script type="text/javascript"
+                src="<?php echo $this->template_dir
+                    . '/jquery-1.7.1.min.js' ?>"></script>
+        <script type="text/javascript"
+                src="<?php echo $this->template_dir
+                    . '/jacobian.js' ?>"></script>
     </head>
     <body class="c4">
-        <div id="header" />
         <div id="wrapper">
             <div id="wrapper2">
                 <div id="main">
-                <?php foreach ($this->history as $output) { ?>
-                    <pre><?php echo $output ?></pre>
-                <?php } ?>
-                    <form action="/" method="post">
-                        <span class="prompt"><?php echo $this->ps1 ?></span>
-                        <input id="command" name="command"
-                               type="text" autocomplete="off"
-                               onkeypress="this.style.width=((this.value.length + 1) * 8) + 'px';" />
+                    <pre><?php foreach ($this->history as $output) {
+                        echo $output;
+                    } ?></pre>
+                    <form action="/" method="post" accept-charset="utf8">
+                        <span class="prompt"><?php echo $this->ps1 ?>
+                        </span><input id="command"
+                               name="command"
+                               type="text"
+                               autocomplete="off" />
                     </form>
                 </div>
             </div>
         </div>
         <div id="footer">
-            <a href="http://www.scesi.memi.umss.edu.bo/" target="_BLANK">SCESI</a>
-            <a href="http://www.memi.umss.edu.bo/" target="_BLANK">MEMI</a>
-            <a href="https://github.com/ccaballero/nonchalant">Código fuente</a>
+            <ul>
+                <li>
+                    <a href="http://www.scesi.memi.umss.edu.bo/"
+                       target="_BLANK">SCESI</a>
+                </li>
+                <li>
+                    <a href="http://www.memi.umss.edu.bo/"
+                       target="_BLANK">MEMI</a>
+                </li>
+                <li>
+                    <a href="https://github.com/ccaballero/nonchalant"
+                       target="_BLANK">Código fuente</a>
+                </li>
+            </ul>
         </div>
-        <script type="text/javascript">
-            window.onload=function(){document.getElementById("command").focus();}
-        </script>
     </body>
 </html>

@@ -1,7 +1,7 @@
 html, body, input {
     margin: 0;
     padding: 0;
-    font: 0.95em "Trebuchet MS",Helvetica,sans-serif;
+    font: 11px "Trebuchet MS",Helvetica,sans-serif;
     color: #202020;
 }
 
@@ -35,7 +35,8 @@ html, body, input {
 
 #main {
     margin: 0px 16px 0px 16px;
-    background-color: #ffffff;
+    background-color: #000000;
+    opacity: 0.75;
     box-shadow: 0px 6px 12px 3px #000000;
     height: 100%;
     overflow: auto;
@@ -43,58 +44,75 @@ html, body, input {
 }
 
 #main, input, pre {
-    font: 0.96em "Courier New", Courier, monospace;
+    font: 14px "Courier New", Courier, monospace;
 }
 
 #footer {
     background-color: #b0b0b0;
     box-shadow: 0px 6px 12px 3px #000000;
-    background-image: -moz-linear-gradient(center top , #c0c0c0, #909090);
+    background-image: -moz-linear-gradient(center top , #f0f0f0, #a0a0a0);
     background-image: -webkit-gradient(linear, 0 0%, 0 100%, from(#c0c0c0), to(#909090));
-    /*background-image: linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);*/
-    /*background-image: -o-linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);*/
-    /*background-image: -webkit-linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);*/
-    /*background-image: -ms-linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);*/
+/*    background-image: linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);
+    background-image: -o-linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);
+    background-image: -webkit-linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);
+    background-image: -ms-linear-gradient(bottom, rgb(160,160,160) 40%, rgb(112,112,112) 70%, rgb(85,85,85) 85%);*/
     position: absolute;
     bottom: 0px;
     width: 100%;
     text-align: right;
-    padding: 2px 0px 4px 0px;
+    padding: 4px 0px;
 }
 
-#footer a {
+#footer ul {
+    margin: 0px;
+    padding: 0px;
+    padding-right: 5px;
+}
+
+#footer ul li {
+    display: inline-block;
+}
+
+#footer ul li a {
     color: #000000;
     text-shadow: 1px 1px 1px #ffffff;
     text-decoration: none;
-    padding: 0px 4px;
-    font-size: 11px;
+    padding: 0px 3px;
 }
 
 pre {
     margin: 0;
     padding: 0;
+    color: #ffffff;
 }
 
 form {
-    background-color: #e0e0e0;
+    background-color: #101010;
 }
 
 input {
     border: none;
-    background-color: #f0f0f0;
+    background-color: #202020;
+    color: #ffffff;
 }
 
 a:focus, input:focus {
     outline: none;
 }
 
-#command {
-    width: 1.0em;
+form {
+    width: 100%;
+    display: inline-block;
 }
 
-.editor {
-    width: 99%;
-    height: 20.0em;
+.prompt {
+    display: inline-block;
+    padding-right: 5px;
+}
+
+#command {
+    display: inline-block;
+    min-width: 1.0em;
 }
 
 /* colors in shell */

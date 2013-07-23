@@ -31,7 +31,7 @@ class Commands_Ls
                     if (is_dir($path . '/' . $entry)) {
                         $files[] = '\033[0;34m' . $entry . '/';
                     } else {
-                        $files[] = '\033[0;30m' . $entry;
+                        $files[] = '\033[0m' . $entry;
                     }
                 }
             }
@@ -40,6 +40,6 @@ class Commands_Ls
         closedir($handle);
         sort($files);
 
-        echo implode(' ', $files);
+        echo implode(' ', $files) . PHP_EOL;
     }
 }

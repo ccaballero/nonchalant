@@ -89,7 +89,7 @@ class Commands_Cal {
                 break;
         }
         
-        echo $salida;
+        echo $salida . PHP_EOL;
     }
     
     private function print_array_month($time, $print_year = true) {

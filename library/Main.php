@@ -118,7 +118,7 @@ class Main extends Generic_Object
         $view = new View();
         $view->layout_directory = APPLICATION_PATH . '/templates';
         $view->template_dir = '/templates/' . $template;
-        $view->ps1 = 'nch #';
+        $view->ps1 = Utils::transform_color('\033[1;32mnch \033[1;37m#');
         $view->history = $color;
         echo $view->render('/' . $template . '.php');
     }
